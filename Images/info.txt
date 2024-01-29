@@ -1,1 +1,0 @@
-pasta para guardar imagens. Preciso incluir esse arquivo, senão a pasta nõ sobe pro github

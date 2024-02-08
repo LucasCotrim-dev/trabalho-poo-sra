@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/cadastro.css">
+    <title>Cadastro</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const error = params.get('error');
+
+            if (error) {
+                const username = params.get('username');
+                const email = params.get('email');
+
+                document.getElementById('username').value = username || '';
+                document.getElementById('email').value = email || '';
+
+                // Exibir a mensagem de erro se necessário
+                const erroCadastro = document.getElementById('erroCadastro');
+                erroCadastro.innerText = 'Usuário ou email já existente!';
+                erroCadastro.style.display = 'block';
+            }
+        });
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="left-half">
+            <img class="logo" src="../images/Logo.svg" alt="Image 1">
+            <img class="imgLogin" src="../images/imgLogin.svg" alt="Image 2">
+        </div>
+        <div class="right-half">
+            <h3>Cadastro</h3>
+            <form action = "cadastro">
+                
+
+                <label for="username">Nome de Usuário</label>
+                <input type="text" id="username" name="username" required>
+            
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required>
+				<div id="erroCadastro" class="erro-message" style="display: none;"></div>
+                <p>Já possui uma conta? <a href="login.html">Clique aqui</a></p>
+
+                <button class="cadastrar-button" type = "submit"> Cadastrar</button>
+
+                <div class="or-line">
+                    <span>ou</span>
+                </div>
+
+                <div class="social-buttons">
+                    <button class="google-button" type="button">
+                        <img src="../images/google.svg" alt="">
+                    </button>
+                    <button class="facebook-button" type="button">
+                        <img src="../images/facebook.svg" alt="">
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

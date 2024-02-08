@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/login.css"> 
+    <title>Rotinify - Login</title>
+	<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const error = params.get('error');
+
+            if (error) {
+                const errorMessage = {
+                    'user_not_found': 'Nome de usuário ou senha incorretos!',
+                    'invalid_credentials': 'Credenciais inválidas. Por favor, verifique seu nome de usuário e senha.'
+                };
+
+                const errorCode = params.get('error_code');
+                const username = params.get('username');
+                const password = params.get('password');
+
+                document.getElementById('username').value = username || '';
+                document.getElementById('password').value = password || '';
+
+                // Exibir a mensagem de erro se necessário
+                const erroCadastro = document.getElementById('erroCadastro');
+                erroCadastro.innerText = errorMessage[errorCode] || 'Ocorreu um erro durante o login.';
+                erroCadastro.style.display = 'block';
+            }
+        });
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="left-half">
+            <img class="logo" src="../images/Logo.svg" alt="Image 1">
+            <img class="imgLogin" src="../images/imgLogin.svg" alt="Image 2">
+        </div>
+        <div class="right-half">
+            <form action="login"> 
+                <h1>Login</h1>
+
+                <label for="username">Nome de Usuário</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required>
+				<div id="erroCadastro" class="error-message" style="display: none;"></div>
+                <p>Ainda não possui uma conta? <a href="cadastro.html">Clique aqui</a></p>
+
+                <button class="cadastrar-button" type="submit">Entrar</button> 
+
+                <div class="or-line">
+                    <span>ou</span>
+                </div>
+
+                <div class="social-buttons">
+                    <button class="google-button" type="button">
+                        <img src="Google.svg" alt="Google Logo">
+                    </button>
+                    <button class="facebook-button" type="button">
+                        <img src="Facebook.svg" alt="Facebook Logo">
+                    </button>
+                </div>
+                
+            </form>
+            
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import= "model.Tarefa" %>
+<%@ page import= "java.util.ArrayList" %>
 <!DOCTYPE html>
 <html lang = "pt-br">
 <head>
@@ -7,7 +9,8 @@
 <title>Rotina</title>
 </head>
 <body>
+
 	<h1>Rotina</h1>
-	<a href = "main"> Criar/Editar Rotina</a>
+	<a href = "criarTarefa.html"> Criar Rotina</a>
 </body>
 </html>

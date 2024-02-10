@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,16 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.UsuarioDAO;
-import model.Tarefa;
-import model.TarefaDAO;
 import model.Usuario;
 
 
-@WebServlet(urlPatterns = {"/Controller", "/cadastro","/login"})
+@WebServlet(urlPatterns = {"/UsuarioController", "/cadastro","/login"})
 public class UsuarioController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     UsuarioDAO usuarioDao = new UsuarioDAO();
-    TarefaDAO tarefaDao = new TarefaDAO();
     Usuario usuario = new Usuario();
 
     public UsuarioController() {
@@ -40,7 +36,11 @@ public class UsuarioController extends HttpServlet {
 	}
 	
 	protected void cadastro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    usuario.setNome(request.getParameter("username"));
+		System.out.println(request.getParameter("username"));
+		System.out.println(request.getParameter("email"));
+		System.out.println(request.getParameter("password"));
+		
+		usuario.setNome(request.getParameter("username"));
 	    usuario.setEmail(request.getParameter("email"));
 	    usuario.setSenha(request.getParameter("password"));
 	    
@@ -54,11 +54,14 @@ public class UsuarioController extends HttpServlet {
 	}
 	
 	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    usuario.setNome(request.getParameter("username"));
+		System.out.println(request.getParameter("username"));
+		System.out.println(request.getParameter("password"));
+		
+		usuario.setNome(request.getParameter("username"));
 	    usuario.setSenha(request.getParameter("password"));
 	    
 	    if (usuarioDao.verificarLogin(usuario)) {
-	        response.sendRedirect("homepage.html");
+	    	response.sendRedirect("main");
 	    } else {
 	        response.sendRedirect("login.html?error=true");
 	    }  

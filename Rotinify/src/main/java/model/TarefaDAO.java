@@ -1,19 +1,34 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class TarefaDAO {
+	private String driver = "com.mysql.cj.jdbc.Driver";
+	private String url = "jdbc:mysql://localhost:3306/rotinify";
+	private String user = "root";
+	private String password = "";
 	
-	UsuarioDAO dao = new UsuarioDAO();
+	public Connection conectar() {
+		Connection con = null;
+		try {
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, user, password);
+			return con;
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
+	}
 	
 	public void adicionarTarefa(Tarefa tarefa) {
-        String create = "INSERT INTO Rotina (nome, descricao, horario, categoria) VALUES (?, ?, ?, ?)";
+        String create = "INSERT INTO `tarefa` (nome, descricao, horario, categoria) VALUES (?, ?, ?, ?)";
         
         try {
-            Connection con = dao.conectar();
+            Connection con = conectar();
             PreparedStatement pst = con.prepareStatement(create);
 
             pst.setString(1, tarefa.getNome());
@@ -30,9 +45,9 @@ public class TarefaDAO {
 	
 	public ArrayList<Tarefa> listarTarefas(){
 		ArrayList<Tarefa> tarefas = new ArrayList<>();
-		String read = "select * from tarefa";
+		String read = "SELECT * FROM tarefa";
 		try {
-			Connection con = dao.conectar();
+			Connection con = conectar();
 			PreparedStatement pst = con.prepareStatement(read);
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()) {

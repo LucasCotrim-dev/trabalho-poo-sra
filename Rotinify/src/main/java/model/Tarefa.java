@@ -6,7 +6,6 @@ public class Tarefa {
     private String descricao;
     private String horario;
     private String categoria;
-    private String status;
     
     public Tarefa() {
     	
@@ -19,13 +18,12 @@ public class Tarefa {
 		this.categoria = categoria;
 	}
     
-    public Tarefa(int id, String nome, String descricao, String horario, String categoria, String status) {
+    public Tarefa(int id, String nome, String descricao, String horario, String categoria) {
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.horario = horario;
 		this.categoria = categoria;
-		this.status = status;
 	}
 
 	public int getId() {
@@ -66,13 +64,5 @@ public class Tarefa {
 
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
 	}
 }

@@ -13,10 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import model.Tarefa;
 import model.TarefaDAO;
 
-@WebServlet(urlPatterns = {"/RotinaController", "/main"})
+@WebServlet(urlPatterns = {"/RotinaController","/main", "/insert"})
 public class RotinaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	TarefaDAO tarefaDao = new TarefaDAO();
+	Tarefa tarefa = new Tarefa();
        
     public RotinaController() {
         super();
@@ -25,8 +26,28 @@ public class RotinaController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getServletPath();
 		if(action.equals("/main")) {
-			
+			tarefas(request,response);
+		}else if(action.equals("/insert")) {
+			adicionarTarefa(request,response);	
 		}
+	}
+	
+	protected void adicionarTarefa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println(request.getParameter("nome"));
+		System.out.println(request.getParameter("descricao"));
+		System.out.println(request.getParameter("horario"));
+		System.out.println(request.getParameter("categoria"));
+		
+		
+	    tarefa.setNome(request.getParameter("nome"));
+	    tarefa.setDescricao(request.getParameter("descricao"));
+	    tarefa.setHorario(request.getParameter("horario"));
+	    tarefa.setCategoria(request.getParameter("categoria"));
+	    
+	    tarefaDao.adicionarTarefa(tarefa);  
+	    
+	    response.sendRedirect(request.getContextPath() + "/main");
 	}
 	
 	protected void tarefas(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

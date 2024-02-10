@@ -126,7 +126,7 @@ form p {
     margin: 20px 0;
     font-weight: lighter;
     font-size: 20px;
-    position: relative; /* Add relative positioning to the .or-line container */
+    position: relative;
     width: 100%;
     text-align: center;
 }
@@ -135,18 +135,18 @@ form p {
 .or-line::after {
     content: "";
     position: absolute;
-    width: 40%; /* Set the width to half of the container's width */
+    width: 40%;
     height: 1px;
     background-color: white;
-    top: 50%; /* Position the line in the center vertically */
+    top: 50%;
 }
 
 .or-line::before {
-    left: 0; /* Position the line on the left side of the container */
+    left: 0;
 }
 
 .or-line::after {
-    right: 0; /* Position the line on the right side of the container */
+    right: 0;
     
 }
 

@@ -45,7 +45,7 @@ public class TarefaDAO {
 	
 	public ArrayList<Tarefa> listarTarefas(){
 		ArrayList<Tarefa> tarefas = new ArrayList<>();
-		String read = "SELECT * FROM tarefa";
+		String read = "SELECT nome, descricao, horario, categoria FROM tarefa ORDER BY horario ASC";
 		try {
 			Connection con = conectar();
 			PreparedStatement pst = con.prepareStatement(read);
@@ -66,4 +66,21 @@ public class TarefaDAO {
 		}
 		
 	}
+	
+	public void excluirTarefa(int id) {
+	    String delete = "DELETE FROM `tarefa` WHERE id = ?";
+	    
+	    try {
+	        Connection con = conectar();
+	        PreparedStatement pst = con.prepareStatement(delete);
+
+	        pst.setInt(1, id);
+
+	        pst.executeUpdate();
+	        con.close();
+	    } catch (Exception e) {
+	        System.out.println(e);
+	    }
+	}
+
 }

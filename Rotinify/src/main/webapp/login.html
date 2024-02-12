@@ -27,6 +27,9 @@
                 const erroCadastro = document.getElementById('erroCadastro');
                 erroCadastro.innerText = errorMessage[errorCode] || 'Ocorreu um erro durante o login.';
                 erroCadastro.style.display = 'block';
+                erroCadastro.style.color = '#FF3333';
+                erroCadastro.style.fontSize = '14px'; 
+                erroCadastro.style.textAlign = 'center';
             }
         });
     </script>

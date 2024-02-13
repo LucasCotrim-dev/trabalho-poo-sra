@@ -1,73 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="cadastro.css">
-    <script src="/src/main/webapp/scripts/cadastro.js"></script>
-    <title>Cadastro</title>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const params = new URLSearchParams(window.location.search);
-            const error = params.get('error');
-
-            if (error) {
-                const username = params.get('username');
-                const email = params.get('email');
-
-                document.getElementById('username').value = username || '';
-                document.getElementById('email').value = email || '';
-
-                // Exibir a mensagem de erro se necessário
-                const erroCadastro = document.getElementById('erroCadastro');
-                erroCadastro.innerText = 'Usuário ou email já existente!';
-                erroCadastro.style.display = 'block';
-                erroCadastro.style.color = '#FF3333';
-                erroCadastro.style.fontSize = '14px'; 
-                erroCadastro.style.textAlign = 'center';
-            }
-        });
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="cadastro.css">
+  <title>Cadastro</title>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://unpkg.com/jwt-decode/build/jwt.decode.js"></script>
+  <script>
+    function handleCredentialResponse(response) {
+    	const data = jwt.decode(response.credential)
+    	console.log(data)
+    }
+    window.onload = function () {
+      google.accounts.id.initialize({
+        client_id: "949063849443-pqfekll6ne4s91a2gsnfk9n18k5b35af.apps.googleusercontent.com",
+        callback: handleCredentialResponse
+      });
+      google.accounts.id.renderButton(
+        document.getElementById("buttonDiv"),
+        {
+          type: "icon",
+          shape: "square",
+          theme: "outline",
+          text: "signup_with",
+          size: "large",
+          
+        }  
+      );
+      google.accounts.id.prompt(); // also display the One Tap dialog
+    }
+  </script>
 </head>
+
 <body>
 
-    <div class="container">
-        <div class="left-half">
-            <img class="logo" src="images/Logo.svg" alt="Image 1">
-            <img class="imgLogin" src="images/imgLogin.svg" alt="Image 2">
-        </div>
-        <div class="right-half">
-            <h3>Cadastro</h3>
-            <form action = "cadastro">
-                
-
-                <label for="username">Nome de Usuário</label>
-                <input type="text" id="username" name="username" required>
-            
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="password">Senha</label>
-                <input type="password" id="password" name="password" required>
-				<div id="erroCadastro" class="erro-message" style="display: none;"></div>
-                <p>Já possui uma conta? <a href="login.html">Clique aqui</a></p>
-
-                <button class="cadastrar-button" type = "submit"> Cadastrar</button>
-
-                <div class="or-line">
-                    <span>ou</span>
-                </div>
-
-                <div class="social-buttons">
-                    <button class="google-button" id="google-sign-in" type="button">
-                        <img src="images/google.svg" alt="">
-                    </button>
-                    <button class="facebook-button" type="button">
-                        <img src="images/facebook.svg" alt="">
-                    </button>
-                </div>
-            </form>
-        </div>
+  <div class="container">
+    <div class="left-half">
+      <img class="logo" src="images/Logo.svg" alt="Image 1">
+      <img class="imgLogin" src="images/imgLogin.svg" alt="Image 2">
     </div>
+    <div class="right-half">
+      <h3>Cadastro</h3>
+      <form action="cadastro">
+        <label for="username">Nome de Usuário</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Senha</label>
+        <input type="password" id="password" name="password" required>
+        <div id="erroCadastro" class="erro-message" style="display: none;"></div>
+        <p>Já possui uma conta? <a href="login.html">Clique aqui</a></p>
+
+        <button class="cadastrar-button" type="submit">Cadastrar</button>
+
+        <div class="or-line">
+          <span>ou</span>
+        </div>
+
+        <div class="social-buttons">
+          <div id="buttonDiv"></div>
+          <button class="google-button" id="google-sign-in" type="button">
+            <img src="images/google.svg" alt="Google logo">
+          </button>
+          <button class="facebook-button" type="button">
+            <img src="images/facebook.svg" alt="">
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
 </body>
+
 </html>

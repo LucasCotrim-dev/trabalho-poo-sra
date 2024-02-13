@@ -1,33 +1,65 @@
 <!DOCTYPE html>
-<html lang = "pt-br">
+<html lang="pt-br">
+
 <head>
     <title>Criar Tarefa</title>
     <meta charset="UTF-8">
-    
+
     <link rel="stylesheet" type="text/css" href="criarTarefa.css">
 </head>
+
 <body>
 
-<div class="container">
-    <h1>Criar Tarefa</h1>
+    <div class="container">
+        <h1>Criar Tarefa</h1>
 
-    <form action="insert" >
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required>
-        
-        <label for="descricao">Descrição:</label>
-        <textarea id="descricao" name="descricao"></textarea>
-        
-        <label for="horario">Horário:</label>
-        <input type="time" id="horario" name="horario" required>
-        
-        <label for="categoria">Categoria:</label>
-        <input type="text" id="categoria" name="categoria">
-        
+        <form action="insert">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
 
-        <button type="submit">Criar Tarefa</button>
-    </form>
-</div>
+            <!-- Design Temporario para Testes -->
+            <button id="listar-imagens-btn">Listar imagens</button>
+            <div id="popup" class="popup">
+                <div class="popup-content" id="popup-content"></div>
+            </div>
+			<!-- . -->
+			
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao"></textarea>
+
+            <label for="horario">Horário:</label>
+            <input type="time" id="horario" name="horario" required>
+
+            <label for="categoria">Categoria:</label>
+            <input type="text" id="categoria" name="categoria">
+
+
+            <button type="submit">Criar Tarefa</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("listar-imagens-btn").addEventListener("click", function() {
+            var popup = document.getElementById("popup");
+            var popupContent = document.getElementById("popup-content");
+
+            // Limpa o conteúdo do popup
+            popupContent.innerHTML = "";
+
+            var imagens = ['brincar.svg', 'dormir.svg'];
+
+            // Adiciona cada imagem ao popup
+            imagens.forEach(function(imagem) {
+                var img = document.createElement("img");
+                img.src = "images/" + imagem;
+                popupContent.appendChild(img);
+            });
+
+            // Exibe o popup
+            popup.style.display = "block";
+        });
+    </script>
 
 </body>
+
 </html>

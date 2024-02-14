@@ -5,26 +5,25 @@ public class Tarefa {
     private String nome;
     private String descricao;
     private String horario;
-    private String categoria;
-
+    private String dia_semana;
     
     public Tarefa() {
     	
     }
     
-    public Tarefa(String nome, String descricao, String horario, String categoria) {
+    public Tarefa(String nome, String descricao, String horario, String dia_semana) {
 		this.nome = nome;
 		this.descricao = descricao;
 		this.horario = horario;
-		this.categoria = categoria;
+		this.dia_semana = dia_semana;
 	}
     
-    public Tarefa(int id, String nome, String descricao, String horario, String categoria) {
+    public Tarefa(int id, String nome, String descricao, String horario, String dia_semana) {
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.horario = horario;
-		this.categoria = categoria;
+		this.dia_semana = dia_semana;
 	}
 
 	public int getId() {
@@ -58,12 +57,12 @@ public class Tarefa {
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
-
-	public String getCategoria() {
-		return categoria;
+	
+	public String getDia_semana() {
+		return dia_semana;
 	}
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public void setDia_semana(String dia_semana) {
+		this.dia_semana = dia_semana;
 	}
 }

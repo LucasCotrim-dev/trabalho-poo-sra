@@ -35,11 +35,7 @@ public class UsuarioController extends HttpServlet {
 		
 	}
 	
-	protected void cadastro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getParameter("username"));
-		System.out.println(request.getParameter("email"));
-		System.out.println(request.getParameter("password"));
-		
+	protected void cadastro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		usuario.setNome(request.getParameter("username"));
 	    usuario.setEmail(request.getParameter("email"));
 	    usuario.setSenha(request.getParameter("password"));
@@ -53,10 +49,7 @@ public class UsuarioController extends HttpServlet {
 	    }	    
 	}
 	
-	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getParameter("username"));
-		System.out.println(request.getParameter("password"));
-		
+	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		usuario.setNome(request.getParameter("username"));
 	    usuario.setSenha(request.getParameter("password"));
 	    

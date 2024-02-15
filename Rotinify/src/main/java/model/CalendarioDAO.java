@@ -41,16 +41,17 @@ public class CalendarioDAO extends TarefaDAO{
     }
 	
 	
-	public ArrayList<Tarefa> listarTarefasDiaSemana(String diaSemana){
+	public ArrayList<Tarefa> listarTarefasDiaSemana(String diaSemana, int idUsuario) {
 	    ArrayList<Tarefa> tarefas = new ArrayList<>();
-	    String read = "SELECT id, nome, descricao, horario FROM tarefa WHERE dia_semana = ? ORDER BY horario";
+	    String read = "SELECT id, nome, descricao, horario FROM tarefa WHERE dia_semana = ? AND usuario_id = ? ORDER BY horario";
 	    try {
 	        Connection con = conectar();
 	        PreparedStatement pst = con.prepareStatement(read);
 	        pst.setString(1, diaSemana);
+	        pst.setInt(2, idUsuario); // Define o ID do usuário
 	        ResultSet rs = pst.executeQuery();
 	        while(rs.next()) {
-	        	int id = rs.getInt("id");
+	            int id = rs.getInt("id");
 	            String nome = rs.getString("nome");
 	            String descricao = rs.getString("descricao");
 	            String horario = rs.getString("horario");
@@ -63,6 +64,7 @@ public class CalendarioDAO extends TarefaDAO{
 	        return null;
 	    }
 	}
+
 	
 	public void removerTarefa(Tarefa tarefa) {
         String delete = "DELETE FROM tarefa WHERE id=?";

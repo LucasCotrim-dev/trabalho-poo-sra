@@ -49,14 +49,18 @@ public class UsuarioController extends HttpServlet {
 	    }	    
 	}
 	
-	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+	protected void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		usuario.setNome(request.getParameter("username"));
 	    usuario.setSenha(request.getParameter("password"));
 	    
-	    if (usuarioDao.verificarLogin(usuario)) {
-	    	response.sendRedirect("main");
+	    if (usuarioDao.verificarLogin(usuario)) { 
+	    	int idUsuario = usuarioDao.obterIdUsuario(usuario);
+	        
+	        // Define o ID do usuário na sessão
+	        request.getSession().setAttribute("idUsuario", idUsuario);
+	        response.sendRedirect("main");
 	    } else {
 	        response.sendRedirect("login.html?error=true");
-	    }  
+	    }    
 	}
 }

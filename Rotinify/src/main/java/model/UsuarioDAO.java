@@ -84,5 +84,27 @@ public class UsuarioDAO {
 	    
 	    return false; 
 	}
+	
+	public int obterIdUsuario(Usuario usuario) {
+	    String query = "SELECT id FROM Usuario WHERE nome = ? AND senha = ?";
+	    int idUsuario = -1; // valor padrão para indicar que nenhum usuário foi encontrado
+	    
+	    try (Connection con = conectar();
+	         PreparedStatement pst = con.prepareStatement(query)) {
+
+	        pst.setString(1, usuario.getNome());
+	        pst.setString(2, usuario.getSenha());
+
+	        try (ResultSet rs = pst.executeQuery()) {
+	            if (rs.next()) {
+	                idUsuario = rs.getInt("id");
+	            }
+	        }
+	    } catch (Exception e) {
+	        System.out.println("Erro ao obter ID do usuário: " + e);
+	    }
+	    
+	    return idUsuario;
+	}
 
 }

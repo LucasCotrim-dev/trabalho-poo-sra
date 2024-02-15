@@ -25,49 +25,52 @@ public class TarefaDAO {
 	}
 	
 	
-	public void adicionarTarefa(Tarefa tarefa) {
-        String create = "INSERT INTO `tarefa` (nome, descricao, horario, dia_semana) VALUES (?, ?, ?, ?)";
-        
-        try {
-            Connection con = conectar();
-            PreparedStatement pst = con.prepareStatement(create);
-
-            pst.setString(1, tarefa.getNome());
-            pst.setString(2, tarefa.getDescricao());
-            pst.setString(3, tarefa.getHorario());
-            pst.setString(4, tarefa.getDia_semana());
-
-            pst.executeUpdate();
-            con.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-	
-	public ArrayList<Tarefa> listarTarefas(){
-		ArrayList<Tarefa> tarefas = new ArrayList<>();
-		String read = "SELECT id, nome, descricao, horario, dia_semana FROM tarefa ORDER BY horario ASC";
-		try {
-			Connection con = conectar();
-			PreparedStatement pst = con.prepareStatement(read);
-			ResultSet rs = pst.executeQuery();
-			while(rs.next()) {
-				int id = rs.getInt(1);
-				String nome = rs.getString(2);
-				String descricao = rs.getString(3);
-				String horario = rs.getString(4);
-				String dia_semana = rs.getString(5);
-				
-				tarefas.add(new Tarefa(id,nome,descricao,horario,dia_semana));
-			}
-			con.close();
-			return tarefas;
-		} catch (Exception e) {
-			System.out.println(e);
-			return null;
-		}
-		
+	public void adicionarTarefa(Tarefa tarefa, int idUsuario) {
+	    String create = "INSERT INTO Tarefa (nome, descricao, horario, dia_semana, usuario_id) values (?,?,?,?,?)";
+	    
+	    try {
+	        Connection con = conectar();
+	        PreparedStatement pst = con.prepareStatement(create);
+	        
+	        pst.setString(1, tarefa.getNome());
+	        pst.setString(2, tarefa.getDescricao());
+	        pst.setString(3, tarefa.getHorario());
+	        pst.setString(4, tarefa.getDia_semana());
+	        pst.setInt(5, idUsuario); // Associar a tarefa ao usuário pelo ID
+	        
+	        pst.executeUpdate();
+	        con.close();
+	    } catch (Exception e) {
+	        System.out.println("Erro ao cadastrar tarefa: " + e);
+	    }
 	}
+
+	
+	public ArrayList<Tarefa> listarTarefas(int idUsuario){
+	    ArrayList<Tarefa> tarefas = new ArrayList<>();
+	    String read = "SELECT id, nome, descricao, horario, dia_semana FROM tarefa WHERE usuario_id = ? ORDER BY horario ASC";
+	    try {
+	        Connection con = conectar();
+	        PreparedStatement pst = con.prepareStatement(read);
+	        pst.setInt(1, idUsuario);
+	        ResultSet rs = pst.executeQuery();
+	        while(rs.next()) {
+	            int id = rs.getInt(1);
+	            String nome = rs.getString(2);
+	            String descricao = rs.getString(3);
+	            String horario = rs.getString(4);
+	            String dia_semana = rs.getString(5);
+	            
+	            tarefas.add(new Tarefa(id,nome,descricao,horario,dia_semana));
+	        }
+	        con.close();
+	        return tarefas;
+	    } catch (Exception e) {
+	        System.out.println(e);
+	        return null;
+	    }
+	}
+
 	public void selecionarTarefa(Tarefa tarefa) {
 		String read2 = "select nome, descricao, horario, dia_semana from tarefa where id=?";
 		

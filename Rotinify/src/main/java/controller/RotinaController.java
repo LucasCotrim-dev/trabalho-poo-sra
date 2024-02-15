@@ -43,30 +43,37 @@ public class RotinaController extends HttpServlet {
 	}
 	
 	protected void tarefasCalendario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Tarefa> listaTarefas = tarefaDao.listarTarefas();
+	    int idUsuario = (int) request.getSession().getAttribute("idUsuario"); // Obtém o ID do usuário da sessão
+	    ArrayList<Tarefa> listaTarefas = tarefaDao.listarTarefas(idUsuario); // Lista as tarefas específicas do usuário
 	    request.setAttribute("tarefas", listaTarefas);
 	    RequestDispatcher rd = request.getRequestDispatcher("calendarioSemanal.jsp");
 	    rd.forward(request, response);
 	}
-	
+
 	protected void tarefas(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String diaSelecionado = request.getParameter("dia_semana");
+	    int idUsuario = (int) request.getSession().getAttribute("idUsuario"); // Obtém o ID do usuário da sessão
+	    String diaSelecionado = request.getParameter("dia_semana");
 	    if (diaSelecionado != null) { 
-	        ArrayList<Tarefa> listaTarefas = calendarioDao.listarTarefasDiaSemana(diaSelecionado); // Usando o método do CalendarioDAO
+	        ArrayList<Tarefa> listaTarefas = calendarioDao.listarTarefasDiaSemana(diaSelecionado, idUsuario); // Usando o método modificado do CalendarioDAO
 	        request.setAttribute("tarefas", listaTarefas);
 	    }
 	    request.setAttribute("diaSelecionado", diaSelecionado != null ? diaSelecionado : ""); // Passa o dia selecionado para o JSP
 	    RequestDispatcher rd = request.getRequestDispatcher("rotina.jsp");
 	    rd.forward(request, response);
 	}
+
+
+
 	
-	protected void adicionarTarefa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {				
+	protected void adicionarTarefa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		int idUsuario = (int) request.getSession().getAttribute("idUsuario");
+		System.out.println("ID do usuário obtido da sessão: " + idUsuario);
 	    tarefa.setNome(request.getParameter("nome"));
 	    tarefa.setDescricao(request.getParameter("descricao"));
 	    tarefa.setHorario(request.getParameter("horario"));
 	    tarefa.setDia_semana(request.getParameter("dia_semana"));
 	    
-	    tarefaDao.adicionarTarefa(tarefa);  
+	    tarefaDao.adicionarTarefa(tarefa,idUsuario);  
 	    
 	    response.sendRedirect("manage?dia_semana=" + tarefa.getDia_semana());
 	}
@@ -82,9 +89,6 @@ public class RotinaController extends HttpServlet {
 	    RequestDispatcher rd = request.getRequestDispatcher("editarTarefa.jsp");
 	    rd.forward(request, response);
 	}
-	
-	
-
 	
 	protected void editarTarefa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		tarefa.setNome(request.getParameter("nome"));

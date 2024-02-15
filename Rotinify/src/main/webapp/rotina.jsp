@@ -27,7 +27,7 @@
                 <span class="horario"><%= listaTarefas.get(i).getHorario() %></span>
                 <p><%= listaTarefas.get(i).getDescricao() %></p>
                 <p><%= listaTarefas.get(i).getDia_semana() %></p>
-                <a class="editar" href="select?id=<%= listaTarefas.get(i).getId() %>">Editar</a>
+                <a class="editar" href="select?id=<%= listaTarefas.get(i).getId() %>&dia_semana=<%= request.getParameter("dia_semana") %>">Editar</a>
                 <a class="excluir" href="javascript: confirmar(<%=listaTarefas.get(i).getId()%>, '<%= request.getParameter("dia_semana") %>')">Excluir</a>
 
                 

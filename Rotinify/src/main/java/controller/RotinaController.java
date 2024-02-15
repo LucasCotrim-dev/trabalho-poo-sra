@@ -12,12 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Tarefa;
 import model.TarefaDAO;
+import model.CalendarioDAO;
 
-@WebServlet(urlPatterns = {"/RotinaController", "/main", "/insert", "/select", "/update", "/delete"})
+@WebServlet(urlPatterns = {"/RotinaController","/manage", "/main", "/insert", "/select", "/update", "/delete"})
 public class RotinaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	TarefaDAO tarefaDao = new TarefaDAO();
 	Tarefa tarefa = new Tarefa();
+	CalendarioDAO calendarioDao = new CalendarioDAO();
        
     public RotinaController() {
         super();
@@ -25,8 +27,10 @@ public class RotinaController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getServletPath();
-		if(action.equals("/main")) {
-			tarefas(request,response);
+		if(action.equals("/manage")) {
+	        tarefas(request,response);
+		}else if(action.equals("/main")) {
+			tarefasCalendario(request,response);
 		}else if(action.equals("/insert")) {
 			adicionarTarefa(request,response);	
 		}else if (action.equals("/select")) { 
@@ -35,14 +39,23 @@ public class RotinaController extends HttpServlet {
 	        editarTarefa(request, response);   
 	    }else if (action.equals("/delete")) { 
 	        removerTarefa(request, response);   
-	    }else{
-	    	response.sendRedirect("main");
 	    }
 	}
 	
-	protected void tarefas(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    ArrayList<Tarefa> listaTarefas = tarefaDao.listarTarefas();
+	protected void tarefasCalendario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ArrayList<Tarefa> listaTarefas = tarefaDao.listarTarefas();
 	    request.setAttribute("tarefas", listaTarefas);
+	    RequestDispatcher rd = request.getRequestDispatcher("calendarioSemanal.jsp");
+	    rd.forward(request, response);
+	}
+	
+	protected void tarefas(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String diaSelecionado = request.getParameter("dia_semana");
+	    if (diaSelecionado != null) { // Verifica se o parâmetro não é nulo
+	        ArrayList<Tarefa> listaTarefas = calendarioDao.listarTarefasDiaSemana(diaSelecionado); // Usando o método do CalendarioDAO
+	        request.setAttribute("tarefas", listaTarefas);
+	    }
+	    request.setAttribute("diaSelecionado", diaSelecionado != null ? diaSelecionado : ""); // Passa o dia selecionado para o JSP
 	    RequestDispatcher rd = request.getRequestDispatcher("rotina.jsp");
 	    rd.forward(request, response);
 	}
@@ -55,10 +68,10 @@ public class RotinaController extends HttpServlet {
 	    
 	    tarefaDao.adicionarTarefa(tarefa);  
 	    
-	    response.sendRedirect("main");
+	    response.sendRedirect("manage");
 	}
 	
-	protected void listarTarefa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {				
+	protected void listarTarefa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {                
 	    int id = Integer.parseInt(request.getParameter("id"));
 	    tarefa.setId(id);
 	    tarefaDao.selecionarTarefa(tarefa);
@@ -69,6 +82,7 @@ public class RotinaController extends HttpServlet {
 	    RequestDispatcher rd = request.getRequestDispatcher("editarTarefa.jsp");
 	    rd.forward(request, response);
 	}
+
 	
 	protected void editarTarefa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		tarefa.setNome(request.getParameter("nome"));
@@ -78,7 +92,7 @@ public class RotinaController extends HttpServlet {
 	    
 	    tarefaDao.alterarTarefa(tarefa);
 	    
-	    response.sendRedirect("main");
+	    response.sendRedirect("manage");
 	}
 	
 	protected void removerTarefa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -87,6 +101,6 @@ public class RotinaController extends HttpServlet {
 		
 		tarefaDao.deletarTarefa(tarefa);
 		
-		response.sendRedirect("main");	
+		response.sendRedirect("manage");	
 	}
 }

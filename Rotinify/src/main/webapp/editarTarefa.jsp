@@ -5,7 +5,7 @@
 <head>
     <title>Editar Tarefa</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="criarTarefa.css">
+    <link rel="stylesheet" type="text/css" href="styles/criarTarefa.css">
 </head>
 
 <body>
@@ -33,13 +33,13 @@
 
 			<label for="dia_semana">Dia da Semana:</label>
             <select id="dia_semana" name="dia_semana" required>
-                <option value="domingo" <%= request.getAttribute("dia_semana").equals("domingo") ? "selected" : "" %>>Domingo</option>
-                <option value="segunda" <%= request.getAttribute("dia_semana").equals("Segunda-feira") ? "selected" : "" %>>Segunda-feira</option>
-                <option value="terça" <%= request.getAttribute("dia_semana").equals("Terça-feira") ? "selected" : "" %>>Terça-feira</option>
-                <option value="quarta" <%= request.getAttribute("dia_semana").equals("Quarta-feira") ? "selected" : "" %>>Quarta-feira</option>
-                <option value="quinta" <%= request.getAttribute("dia_semana").equals("Quinta-feira") ? "selected" : "" %>>Quinta-feira</option>
-                <option value="sexta" <%= request.getAttribute("dia_semana").equals("Sexta-feira") ? "selected" : "" %>>Sexta-feira</option>
-                <option value="sabado" <%= request.getAttribute("dia_semana").equals("Sábado") ? "selected" : "" %>>Sábado</option>
+                <option value="Domingo">Domingo</option>
+                <option value="Segunda-feira">Segunda-feira</option>
+                <option value="Terça-feira">Terça-feira</option>
+                <option value="Quarta-feira">Quarta-feira</option>
+                <option value="Quinta-feira">Quinta-feira</option>
+                <option value="Sexta-feira">Sexta-feira</option>
+                <option value="Sábado">Sábado</option>
             </select>
             
             <button type="submit">Salvar Tarefa</button>

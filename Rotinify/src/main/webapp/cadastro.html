@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="cadastro.css">
+  <link rel="stylesheet" href="styles/cadastro.css">
   <title>Cadastro</title>
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://accounts.google.com/gsi/client"></script>
   <script src="https://unpkg.com/jwt-decode/build/jwt.decode.js"></script>
   <script>
     function handleCredentialResponse(response) {
@@ -31,11 +31,49 @@
       );
       google.accounts.id.prompt(); // also display the One Tap dialog
     }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const params = new URLSearchParams(window.location.search);
+        const error = params.get('error');
+
+        if (error) {
+            const errorMessage = {
+                'user_not_found': 'Nome de usuário ou email inválidos!',
+                'invalid_credentials': 'Credenciais inválidas. Por favor, verifique seu nome de usuário e senha.'
+            };
+
+            const errorCode = params.get('error_code');
+            const username = params.get('username');
+            const email = params.get('email');
+
+            document.getElementById('username').value = username || '';
+            document.getElementById('email').value = email || '';
+
+            // Exibir a mensagem de erro se necessário
+            const erroCadastro = document.getElementById('erroCadastro');
+            erroCadastro.innerText = errorMessage[errorCode] || 'Ocorreu um erro durante o cadastro.';
+            erroCadastro.style.display = 'block';
+            erroCadastro.style.color = '#FF3333';
+            erroCadastro.style.fontSize = '14px'; 
+            erroCadastro.style.textAlign = 'center';
+        }
+        
+        const success = params.get('success');
+
+        if (success === 'true') {
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+
+            // Oculta a mensagem após 3 segundos
+            setTimeout(function() {
+                successMessage.style.display = 'none';
+            }, 3000);
+        }
+    });
   </script>
 </head>
 
 <body>
-
   <div class="container">
     <div class="left-half">
       <img class="logo" src="images/Logo.svg" alt="Image 1">
@@ -73,7 +111,6 @@
       </form>
     </div>
   </div>
-
 </body>
 
 </html>

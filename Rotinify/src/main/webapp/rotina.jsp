@@ -6,9 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Rotina do Dia</title>
+    <title>Tarefas do Dia</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="rotina.css">
+    <link rel="stylesheet" type="text/css" href="styles/rotina.css">
 </head>
 <body>
 	
@@ -40,7 +40,7 @@
     <%
         }
     %>
-
+	<a href="main">Voltar para o Calendário Semanal</a>
     <script>
     function confirmar(id) {
     	let resposta = confirm("Confirma a exclusão desta tarefa?")

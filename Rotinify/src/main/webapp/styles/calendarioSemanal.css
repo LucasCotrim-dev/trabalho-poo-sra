@@ -1,0 +1,39 @@
+
+body {
+    font-family: 'Aleo', sans-serif;
+}
+h1 {
+    text-align: center;
+}
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 8px; 
+    text-align: center; 
+    border-right: 2px solid black;
+}
+.coluna ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.tarefa {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.gerenciar-button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+}

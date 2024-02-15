@@ -24,6 +24,7 @@ public class TarefaDAO {
 		}
 	}
 	
+	
 	public void adicionarTarefa(Tarefa tarefa) {
         String create = "INSERT INTO `tarefa` (nome, descricao, horario, dia_semana) VALUES (?, ?, ?, ?)";
         

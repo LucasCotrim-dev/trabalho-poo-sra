@@ -51,7 +51,7 @@ public class RotinaController extends HttpServlet {
 	
 	protected void tarefas(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String diaSelecionado = request.getParameter("dia_semana");
-	    if (diaSelecionado != null) { // Verifica se o parâmetro não é nulo
+	    if (diaSelecionado != null) { 
 	        ArrayList<Tarefa> listaTarefas = calendarioDao.listarTarefasDiaSemana(diaSelecionado); // Usando o método do CalendarioDAO
 	        request.setAttribute("tarefas", listaTarefas);
 	    }
@@ -68,7 +68,7 @@ public class RotinaController extends HttpServlet {
 	    
 	    tarefaDao.adicionarTarefa(tarefa);  
 	    
-	    response.sendRedirect("manage");
+	    response.sendRedirect("manage?dia_semana=" + tarefa.getDia_semana());
 	}
 	
 	protected void listarTarefa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {                
@@ -82,6 +82,8 @@ public class RotinaController extends HttpServlet {
 	    RequestDispatcher rd = request.getRequestDispatcher("editarTarefa.jsp");
 	    rd.forward(request, response);
 	}
+	
+	
 
 	
 	protected void editarTarefa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -90,17 +92,24 @@ public class RotinaController extends HttpServlet {
 	    tarefa.setHorario(request.getParameter("horario"));
 	    tarefa.setDia_semana(request.getParameter("dia_semana"));
 	    
+	    
+	    
 	    tarefaDao.alterarTarefa(tarefa);
 	    
-	    response.sendRedirect("manage");
+	    calendarioDao.atualizarTarefa(tarefa);
+	    
+	    response.sendRedirect("manage?dia_semana=" + tarefa.getDia_semana());
 	}
 	
 	protected void removerTarefa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		tarefa.setId(id);
 		
-		tarefaDao.deletarTarefa(tarefa);
 		
-		response.sendRedirect("manage");	
+		tarefaDao.deletarTarefa(tarefa);
+		calendarioDao.removerTarefa(tarefa);
+		
+		String diaSemana = request.getParameter("dia_semana");
+	    response.sendRedirect("manage?dia_semana=" + diaSemana);
 	}
 }

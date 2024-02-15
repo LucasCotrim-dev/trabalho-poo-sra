@@ -14,7 +14,8 @@
 	
 	<h1>Lista de Tarefas</h1>
     
-    <a href="criarTarefa.html">Criar Tarefa</a>
+    <a href="criarTarefa.jsp?dia_semana=<%= request.getAttribute("diaSelecionado") %>">Criar Tarefa</a>
+
 
     <%
         ArrayList<Tarefa> listaTarefas = (ArrayList<Tarefa>) request.getAttribute("tarefas");
@@ -27,7 +28,8 @@
                 <p><%= listaTarefas.get(i).getDescricao() %></p>
                 <p><%= listaTarefas.get(i).getDia_semana() %></p>
                 <a class="editar" href="select?id=<%= listaTarefas.get(i).getId() %>">Editar</a>
-                <a class="excluir" href="javascript: confirmar(<%=listaTarefas.get(i).getId()%>)">Excluir</a>
+                <a class="excluir" href="javascript: confirmar(<%=listaTarefas.get(i).getId()%>, '<%= request.getParameter("dia_semana") %>')">Excluir</a>
+
                 
             </div>
     <%
@@ -42,12 +44,12 @@
     %>
 	<a href="main">Voltar para o Calendário Semanal</a>
     <script>
-    function confirmar(id) {
-    	let resposta = confirm("Confirma a exclusão desta tarefa?")
-    	if (resposta === true) {
-    		window.location.href = "delete?id=" + id
-    	}
-    }
+	    function confirmar(id, diaSemana) {
+	        let resposta = confirm("Confirma a exclusão desta tarefa?")
+	        if (resposta === true) {
+	            window.location.href = "delete?id=" + id + "&dia_semana=" + diaSemana;
+	        }
+	    }
     </script>
 </body>
 </html>

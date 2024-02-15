@@ -5,19 +5,17 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
-    private CalendarioSemanal calendarioSemanal;
     
     public Usuario() {
     	
     }
     
-    public Usuario(int id, String nome, String email, String senha, CalendarioSemanal calendarioSemanal) {
+    public Usuario(int id, String nome, String email, String senha) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
-		this.calendarioSemanal = calendarioSemanal;
 	}
 
 	public int getId() {
@@ -50,17 +48,5 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public CalendarioSemanal getCalendarioSemanal() {
-		return calendarioSemanal;
-	}
-
-	public void setCalendarioSemanal(CalendarioSemanal calendarioSemanal) {
-		this.calendarioSemanal = calendarioSemanal;
-	}
-	
-	public void cadastrar() {
-		
 	}
 }

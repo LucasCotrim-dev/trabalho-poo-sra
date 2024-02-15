@@ -5,6 +5,11 @@ body {
 h1 {
     text-align: center;
 }
+
+.coluna {
+    max-width: 180px; /* Define o tamanho máximo da coluna */
+    word-wrap: break-word; /* Quebra de palavra */
+}
 table {
     width: 80%;
     margin: 0 auto;

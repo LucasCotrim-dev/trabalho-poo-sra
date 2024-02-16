@@ -1,6 +1,9 @@
 
 body {
     font-family: 'Aleo', sans-serif;
+    background-image: url('../images/fundo3.jpg');
+    background-size: cover;
+
 }
 h1 {
     text-align: center;
@@ -26,10 +29,37 @@ th, td {
 }
 
 .tarefa {
+    background-color: #fff;
     border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona sombra sutil */
 }
+
+.descricao-horario {
+    display: flex;
+    flex-direction: column;
+}
+
+.nome-tarefa {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.descricao-tarefa {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px; /* Reduzido o espaço entre a descrição e o horário */
+}
+
+.horario-tarefa {
+    font-size: 12px;
+    color: #888;
+}
+
 
 .gerenciar-button {
     padding: 5px 10px;

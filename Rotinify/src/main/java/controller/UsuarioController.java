@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.UsuarioDAO;
 import model.Usuario;
+import model.UsuarioAutista;
 
 
 @WebServlet(urlPatterns = {"/UsuarioController", "/cadastro","/login"})
@@ -17,6 +18,7 @@ public class UsuarioController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     UsuarioDAO usuarioDao = new UsuarioDAO();
     Usuario usuario = new Usuario();
+    UsuarioAutista usuarioAutista = new UsuarioAutista();
 
     public UsuarioController() {
         super();
@@ -35,13 +37,14 @@ public class UsuarioController extends HttpServlet {
 		
 	}
 	
-	protected void cadastro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+	protected void cadastro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		usuarioAutista.setCuidador(request.getParameter("cuidador"));
 		usuario.setNome(request.getParameter("username"));
 	    usuario.setEmail(request.getParameter("email"));
 	    usuario.setSenha(request.getParameter("password"));
 	    
 	    if (!usuarioDao.verificarCadastro(usuario)) {
-	    	usuarioDao.cadastroUsuario(usuario);
+	    	usuarioDao.cadastroUsuario(usuario, usuarioAutista);
 	        response.sendRedirect("login.html");
 	    } else {
 	        response.sendRedirect("cadastro.html?error=true&username=" + usuario.getNome() + "&email=" + usuario.getEmail());
@@ -58,7 +61,7 @@ public class UsuarioController extends HttpServlet {
 	        
 	        // Define o ID do usuário na sessão
 	        request.getSession().setAttribute("idUsuario", idUsuario);
-	        response.sendRedirect("main");
+	        response.sendRedirect("menu.html");
 	    } else {
 	        response.sendRedirect("login.html?error=true");
 	    }    

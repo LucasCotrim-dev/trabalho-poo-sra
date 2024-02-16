@@ -23,9 +23,8 @@ public class UsuarioDAO {
 		}
 	}
 	
-	public void cadastroUsuario(Usuario usuario) {
-		String create = "INSERT INTO Usuario (nome, email, senha) values (?,?,?)";
-		
+	public void cadastroUsuario(Usuario usuario, UsuarioAutista usuarioAutista) {
+		String create = "INSERT INTO Usuario (nome, email, senha, cuidador) values (?,?,?,?)";
 		try {
 			Connection con = conectar();
 			PreparedStatement pst = con.prepareStatement(create);
@@ -33,7 +32,7 @@ public class UsuarioDAO {
 			pst.setString(1, usuario.getNome());
 			pst.setString(2, usuario.getEmail());
 			pst.setString(3, usuario.getSenha());
-			
+			pst.setString(4, usuarioAutista.getCuidador());
 			pst.executeUpdate();
 			con.close();
 		} catch (Exception e) {

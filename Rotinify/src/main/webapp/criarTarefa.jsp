@@ -17,13 +17,6 @@
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" required>
 
-            <!-- Design Temporário para Testes -->
-            <button id="listar-imagens-btn">Listar imagens</button>
-            <div id="popup" class="popup">
-                <div class="popup-content" id="popup-content"></div>
-            </div>
-            <!-- . -->
-
             <label for="descricao">Descrição:</label>
             <textarea id="descricao" name="descricao"></textarea>
 
@@ -45,31 +38,6 @@
             <button type="submit">Criar Tarefa</button>
         </form>
     </div>
-
-    <script>
-        document.getElementById("listar-imagens-btn").addEventListener("click", function() {
-            var popup = document.getElementById("popup");
-            var popupContent = document.getElementById("popup-content");
-
-            // Limpa o conteúdo do popup
-            popupContent.innerHTML = "";
-
-            var imagens = ['brincar.svg', 'dormir.svg'];
-
-            // Adiciona cada imagem ao popup
-            imagens.forEach(function(imagem) {
-                var img = document.createElement("img");
-                img.src = "images/" + imagem;
-                img.width = 200;  
-                img.height = 200;
-                popupContent.appendChild(img);
-            });
-
-            // Exibe o popup
-            popup.style.display = "block";
-        });
-    </script>
-
 </body>
 
 </html>

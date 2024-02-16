@@ -42,10 +42,11 @@
 					%>
 					<li>
 						<div class="tarefa">
-							<%=listaTarefas.get(i).getNome()%>
-							-
-							<%=listaTarefas.get(i).getDescricao()%>
-							(<%=listaTarefas.get(i).getHorario()%>)
+						    <span class="nome-tarefa"><%= listaTarefas.get(i).getNome() %></span>
+						    <div class="descricao-horario">
+						        <span class="descricao-tarefa"><%= listaTarefas.get(i).getDescricao() %></span>
+						        <span class="horario-tarefa">(<%= listaTarefas.get(i).getHorario() %>)</span>
+						    </div>
 						</div>
 					</li>
 					<%
@@ -69,10 +70,11 @@
 					%>
 					<li>
 						<div class="tarefa">
-							<%=listaTarefas.get(i).getNome()%>
-							-
-							<%=listaTarefas.get(i).getDescricao()%>
-							(<%=listaTarefas.get(i).getHorario()%>)
+						    <span class="nome-tarefa"><%= listaTarefas.get(i).getNome() %></span>
+						    <div class="descricao-horario">
+						        <span class="descricao-tarefa"><%= listaTarefas.get(i).getDescricao() %></span>
+						        <span class="horario-tarefa">(<%= listaTarefas.get(i).getHorario() %>)</span>
+						    </div>
 						</div>
 					</li>
 					<%
@@ -96,10 +98,11 @@
 					%>
 					<li>
 						<div class="tarefa">
-							<%=listaTarefas.get(i).getNome()%>
-							-
-							<%=listaTarefas.get(i).getDescricao()%>
-							(<%=listaTarefas.get(i).getHorario()%>)
+						    <span class="nome-tarefa"><%= listaTarefas.get(i).getNome() %></span>
+						    <div class="descricao-horario">
+						        <span class="descricao-tarefa"><%= listaTarefas.get(i).getDescricao() %></span>
+						        <span class="horario-tarefa">(<%= listaTarefas.get(i).getHorario() %>)</span>
+						    </div>
 						</div>
 					</li>
 					<%
@@ -122,10 +125,11 @@
 					%>
 					<li>
 						<div class="tarefa">
-							<%=listaTarefas.get(i).getNome()%>
-							-
-							<%=listaTarefas.get(i).getDescricao()%>
-							(<%=listaTarefas.get(i).getHorario()%>)
+						    <span class="nome-tarefa"><%= listaTarefas.get(i).getNome() %></span>
+						    <div class="descricao-horario">
+						        <span class="descricao-tarefa"><%= listaTarefas.get(i).getDescricao() %></span>
+						        <span class="horario-tarefa">(<%= listaTarefas.get(i).getHorario() %>)</span>
+						    </div>
 						</div>
 					</li>
 					<%
@@ -148,10 +152,11 @@
 					%>
 					<li>
 						<div class="tarefa">
-							<%=listaTarefas.get(i).getNome()%>
-							-
-							<%=listaTarefas.get(i).getDescricao()%>
-							(<%=listaTarefas.get(i).getHorario()%>)
+						    <span class="nome-tarefa"><%= listaTarefas.get(i).getNome() %></span>
+						    <div class="descricao-horario">
+						        <span class="descricao-tarefa"><%= listaTarefas.get(i).getDescricao() %></span>
+						        <span class="horario-tarefa">(<%= listaTarefas.get(i).getHorario() %>)</span>
+						    </div>
 						</div>
 					</li>
 					<%
@@ -174,10 +179,11 @@
 					%>
 					<li>
 						<div class="tarefa">
-							<%=listaTarefas.get(i).getNome()%>
-							-
-							<%=listaTarefas.get(i).getDescricao()%>
-							(<%=listaTarefas.get(i).getHorario()%>)
+						    <span class="nome-tarefa"><%= listaTarefas.get(i).getNome() %></span>
+						    <div class="descricao-horario">
+						        <span class="descricao-tarefa"><%= listaTarefas.get(i).getDescricao() %></span>
+						        <span class="horario-tarefa">(<%= listaTarefas.get(i).getHorario() %>)</span>
+						    </div>
 						</div>
 					</li>
 					<%
@@ -200,10 +206,11 @@
 					%>
 					<li>
 						<div class="tarefa">
-							<%=listaTarefas.get(i).getNome()%>
-							-
-							<%=listaTarefas.get(i).getDescricao()%>
-							(<%=listaTarefas.get(i).getHorario()%>)
+						    <span class="nome-tarefa"><%= listaTarefas.get(i).getNome() %></span>
+						    <div class="descricao-horario">
+						        <span class="descricao-tarefa"><%= listaTarefas.get(i).getDescricao() %></span>
+						        <span class="horario-tarefa">(<%= listaTarefas.get(i).getHorario() %>)</span>
+						    </div>
 						</div>
 					</li>
 					<%

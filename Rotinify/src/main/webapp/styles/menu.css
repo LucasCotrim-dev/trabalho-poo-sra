@@ -1,0 +1,98 @@
+body {
+    background-color: white;
+    font-family: 'Aleo', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/fundo.jpg'); /* Substitua 'caminho/para/sua/imagem.jpg' pelo caminho da sua imagem */
+    background-size: 100%;
+}
+
+.navbar {
+    color: #000000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 40px; 
+}
+
+.logo a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+}
+.menu-options {
+    display: flex; /* Aplica flexbox nas opções do menu */
+    justify-content: center; /* Centraliza as opções horizontalmente */
+}
+
+.menu-option {
+    margin: 0 10px; 
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #000000;
+    font-size: 40px;
+    border: 2px solid #63BCE1; /* Adiciona uma borda sólida */
+    border-radius: 20px; /* Bordas arredondadas */
+    transition: box-shadow 0.3s ease; /* Adiciona transição suave para a sombra */
+    position: relative; /* Permite posicionar o texto explicativo */
+    overflow: hidden; /* Oculta o texto que extrapola o tamanho do botão */
+    background-color: rgb(99,188,225); /* Adiciona uma cor de fundo com transparência */
+}
+
+.menu-option:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra ao botão */
+}
+
+.menu-option::after {
+    content: attr(data-text); /* Usa o conteúdo do atributo data-text como texto explicativo */
+    display: block;
+    font-size: 16px;
+    margin-top: 5px;
+    color: #333;
+    position: absolute; /* Posiciona o texto explicativo em relação à opção do menu */
+    bottom: -100%; /* Move o texto para fora do botão */
+    left: 0;
+    right: 0;
+    text-align: center; /* Centraliza o texto horizontalmente */
+    transition: bottom 0.3s ease; /* Adiciona uma transição suave para a animação */
+}
+
+.menu-option:hover::after {
+    bottom: 0; /* Move o texto para dentro do botão */
+}
+
+.social-links {
+    display: flex;
+}
+
+.social-link {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Media query para telas menores */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+    }
+    
+    .logo {
+        margin-bottom: 20px;
+    }
+    
+    .menu-container {
+        margin-top: 0;
+    }
+}

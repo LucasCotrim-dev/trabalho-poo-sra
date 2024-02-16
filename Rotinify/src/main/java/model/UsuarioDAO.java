@@ -105,5 +105,66 @@ public class UsuarioDAO {
 	    
 	    return idUsuario;
 	}
+	
+	public Usuario obterUsuarioPorId(int idUsuario) {
+	    String query = "SELECT * FROM Usuario WHERE id = ?";
+	    Usuario usuario = null;
+	    
+	    try (Connection con = conectar();
+	         PreparedStatement pst = con.prepareStatement(query)) {
 
+	        pst.setInt(1, idUsuario);
+
+	        try (ResultSet rs = pst.executeQuery()) {
+	            if (rs.next()) {
+	                usuario = new Usuario();
+	                usuario.setId(rs.getInt("id"));
+	                usuario.setNome(rs.getString("nome"));
+	                usuario.setEmail(rs.getString("email"));
+	                usuario.setSenha(rs.getString("senha"));
+	                usuario.setFotoPerfil(rs.getString("foto_url"));
+	                // Se houver mais campos a serem mapeados, você pode adicionar aqui
+	            }
+	        }
+	    } catch (Exception e) {
+	        System.out.println("Erro ao obter usuário por ID: " + e);
+	    }
+	    
+	    return usuario;
+	}
+	public void atualizarPerfil(int idUsuario, Usuario usuario, UsuarioAutista usuarioAutista, String fotoUrl) {
+	    String updateUsuario = "UPDATE Usuario SET nome = ?, email = ?, senha = ? WHERE id = ?";
+	    String updateUsuarioAutista = "UPDATE UsuarioAutista SET cuidador = ? WHERE id_usuario = ?";
+	    String updateFoto = "UPDATE Usuario SET foto_url = ? WHERE id = ?";
+	    
+	    try (Connection con = conectar()) {
+	        // Atualiza informações básicas do usuário
+	        PreparedStatement pstUsuario = con.prepareStatement(updateUsuario);
+	        pstUsuario.setString(1, usuario.getNome());
+	        pstUsuario.setString(2, usuario.getEmail());
+	        pstUsuario.setString(3, usuario.getSenha());
+	        pstUsuario.setInt(4, idUsuario);
+	        pstUsuario.executeUpdate();
+	        
+	        // Se o usuário for do tipo autista, atualiza informações adicionais
+	        if (usuarioAutista != null) {
+	            PreparedStatement pstUsuarioAutista = con.prepareStatement(updateUsuarioAutista);
+	            pstUsuarioAutista.setString(1, usuarioAutista.getCuidador());
+	            pstUsuarioAutista.setInt(2, idUsuario);
+	            pstUsuarioAutista.executeUpdate();
+	        }
+	        
+	        // Atualiza a URL da foto de perfil
+	        PreparedStatement pstFoto = con.prepareStatement(updateFoto);
+	        pstFoto.setString(1, fotoUrl);
+	        pstFoto.setInt(2, idUsuario);
+	        pstFoto.executeUpdate();
+	        
+	    } catch (Exception e) {
+	        System.out.println("Erro ao atualizar perfil do usuário: " + e);
+	    }
+	}
+
+
+	
 }

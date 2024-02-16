@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="styles/menu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#">ROTINIFY</a>
+        </div>
+        <div class="social-links">
+            <a href="facebook.com" class="social-link">Facebook</a>
+            <a href="twitter.com" class="social-link">Twitter</a>
+            <a href="instagram.com" class="social-link">Instagram</a>
+        </div>
+    </nav>
+    <div class="menu-container">
+        <div class="menu-options">
+            <a href="main" class="menu-option" data-text="Simples, fácil e intuitívo">Calendário Básico</a>
+            <a href="calendarioComImagens.html" class="menu-option" data-text="Recomendado para Crianças">Calendário Visual</a>
+            <a href="editarPerfil.jsp" class="menu-option" data-text="Personalização e Design">Edição de Perfil</a>
+        </div>
+    </div>
+    <%
+        // Aqui você pode inserir lógica Java para processar os dados necessários
+        // Por exemplo, para obter os textos explicativos dinamicamente
+    %>
+</body>
+
+</html>

@@ -42,6 +42,8 @@ public class RotinaController extends HttpServlet {
 	    }
 	}
 	
+	
+	
 	protected void tarefasCalendario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    int idUsuario = (int) request.getSession().getAttribute("idUsuario"); // Obtém o ID do usuário da sessão
 	    ArrayList<Tarefa> listaTarefas = tarefaDao.listarTarefas(idUsuario); // Lista as tarefas específicas do usuário

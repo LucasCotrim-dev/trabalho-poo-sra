@@ -61,7 +61,19 @@ public class UsuarioController extends HttpServlet {
 	        
 	        // Define o ID do usuário na sessão
 	        request.getSession().setAttribute("idUsuario", idUsuario);
-	        response.sendRedirect("menu.html");
+	        request.setAttribute("usuario", usuario);
+	        
+	        UsuarioAutista usuarioAutista = new UsuarioAutista();
+	        usuarioAutista.setCuidador(request.getParameter("cuidador"));
+	        // Se houver outros atributos, preencha-os aqui também
+	        request.getSession().setAttribute("usuarioAutista", usuarioAutista);
+
+	        
+	     // Obtém o usuário do banco de dados usando o ID
+	        Usuario usuarioCompleto = usuarioDao.obterUsuarioPorId(idUsuario);
+	        request.getSession().setAttribute("usuario", usuarioCompleto);
+
+	        response.sendRedirect("menu.jsp");
 	    } else {
 	        response.sendRedirect("login.html?error=true");
 	    }    

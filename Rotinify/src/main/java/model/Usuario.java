@@ -5,6 +5,7 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+    private String fotoPerfil;
     
     public Usuario() {
     	
@@ -16,6 +17,14 @@ public class Usuario {
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
+	}
+    public Usuario(int id, String nome, String email, String senha,String fotoPerfil) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+		this.fotoPerfil = fotoPerfil;
 	}
 
 	public int getId() {
@@ -48,5 +57,13 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	public String getFotoPerfil() {
+		return fotoPerfil;
+	}
+
+	public void setFotoPerfil(String fotoPerfil) {
+		this.fotoPerfil = fotoPerfil;
 	}
 }

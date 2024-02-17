@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 * {
     margin: 0;
     padding: 0;
@@ -10,15 +9,18 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: "Nunito", sans-serif;
     font-size:16px;
     min-height: 100%;
     line-height: 1;
+    background-image: url('../images/padrao-de-fundo4.png');
+    background-size: auto; /* Ou o tamanho desejado da imagem */
+    background-size: 20%;
+    background-repeat: repeat; /* Permite a repetição da imagem */
+    background-attachment: fixed;
 }
 
-
 @media only screen and (max-width: 768px) {
-    
     #logo-container {
         margin-left: auto;
         margin-right: auto;
@@ -38,7 +40,6 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
-    
     #logo-container {
         margin-left: auto;
         margin-right: auto;
@@ -65,7 +66,6 @@ body {
         margin-top: 10px;
     }
 }
-
 
 header {
     background: linear-gradient(to right, #63BCE1, #6387E1);
@@ -116,7 +116,6 @@ nav li {
     margin-left: 20px; 
 }
 
-
 nav a {
     text-decoration: none;
     color: #000;
@@ -160,25 +159,93 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
-
-
 
 .features {
-    background-color: #C4E8C1; 
+    background-color: #C4E8C1;
+    
 }
 
-.about {
-    background-color: #C9E4F5;
-}
+
 
 .mobile {
     background-color: #63BCE1; 
+    
+}
+
+#welcome {
+    background-image: url('../images/seu-fundo.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #logo-container {
     margin-right: auto; 
     margin-left: 20px; 
+}
+
+.flex-container {
+    display: flex;
+    justify-content: flex-start; /* Alinha os itens no início do contêiner */
+    align-items: center; /* Alinha os itens verticalmente */
+}
+
+
+#about {
+    padding: 30px 10%; 
+}
+
+#about .button-link {
+    padding: 15px 30px; 
+    font-size: 18px;
+}
+
+.about-content {
+    display: flex;
+    align-items: left;
+}
+
+.about-text {
+    flex: 1; 
+    margin-left: 0; 
+    text-align: left; 
+}
+
+.about-text h1 {
+    margin-bottom: 50px; /* Adiciona margem inferior ao título */
+    font-size:40px;
+}
+
+.about-text p {
+    font-size:25px; /* Adiciona margem inferior ao título */
+}
+
+
+.about-image {
+    width: 35%; /* Diminuindo a largura da imagem */
+}
+
+.about-image img {
+    width: 100%; 
+    height: auto; 
+}
+
+/* Adicione estilos específicos para dispositivos menores, se necessário */
+@media only screen and (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        grid-row-gap: 20px; 
+        text-align: center;
+    }
+    .about-image {
+        order: -1; /* Inverte a ordem da imagem para que ela apareça acima do texto em dispositivos menores */
+    }
 }
 
 footer {

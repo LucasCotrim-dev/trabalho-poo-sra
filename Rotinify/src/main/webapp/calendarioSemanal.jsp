@@ -9,14 +9,17 @@
 <link rel="stylesheet" type="text/css"
 	href="styles/calendarioSemanal.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
-	href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,100..900;1,100..900&display=swap"
+	href="https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@95.3,300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
 	rel="stylesheet">
 <title>Calendário Semanal</title>
 </head>
 <body>
 	<h1>Monte sua Rotina</h1>
+	<a href="menu.jsp" class="voltar-button"> <img
+		src="images/home.png" alt="Voltar para o Menu">
+	</a>
 	<table>
 		<tr>
 			<th>Segunda-feira</th>
@@ -42,11 +45,15 @@
 					%>
 					<li>
 						<div class="tarefa">
-						    <span class="nome-tarefa"><%= listaTarefas.get(i).getNome() %></span>
-						    <div class="descricao-horario">
-						        <span class="descricao-tarefa"><%= listaTarefas.get(i).getDescricao() %></span>
-						        <span class="horario-tarefa">(<%= listaTarefas.get(i).getHorario() %>)</span>
-						    </div>
+							<span class="nome-tarefa"><%=listaTarefas.get(i).getNome()%></span>
+							<div class="descricao-horario">
+								<span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
+								<div class="horario-icon-container">
+									<img src="images/hora.jpg" alt="Descrição da imagem"
+										class="imagem-horario"> <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%>
+									</span>
+								</div>
+							</div>
 						</div>
 					</li>
 					<%
@@ -70,11 +77,15 @@
 					%>
 					<li>
 						<div class="tarefa">
-						    <span class="nome-tarefa"><%= listaTarefas.get(i).getNome() %></span>
-						    <div class="descricao-horario">
-						        <span class="descricao-tarefa"><%= listaTarefas.get(i).getDescricao() %></span>
-						        <span class="horario-tarefa">(<%= listaTarefas.get(i).getHorario() %>)</span>
-						    </div>
+							<span class="nome-tarefa"><%=listaTarefas.get(i).getNome()%></span>
+							<div class="descricao-horario">
+								<span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
+								<div class="horario-icon-container">
+									<img src="images/hora.jpg" alt="Descrição da imagem"
+										class="imagem-horario"> <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%>
+									</span>
+								</div>
+							</div>
 						</div>
 					</li>
 					<%
@@ -98,11 +109,15 @@
 					%>
 					<li>
 						<div class="tarefa">
-						    <span class="nome-tarefa"><%= listaTarefas.get(i).getNome() %></span>
-						    <div class="descricao-horario">
-						        <span class="descricao-tarefa"><%= listaTarefas.get(i).getDescricao() %></span>
-						        <span class="horario-tarefa">(<%= listaTarefas.get(i).getHorario() %>)</span>
-						    </div>
+							<span class="nome-tarefa"><%=listaTarefas.get(i).getNome()%></span>
+							<div class="descricao-horario">
+								<span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
+								<div class="horario-icon-container">
+									<img src="images/hora.jpg" alt="Descrição da imagem"
+										class="imagem-horario"> <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%>
+									</span>
+								</div>
+							</div>
 						</div>
 					</li>
 					<%
@@ -125,11 +140,15 @@
 					%>
 					<li>
 						<div class="tarefa">
-						    <span class="nome-tarefa"><%= listaTarefas.get(i).getNome() %></span>
-						    <div class="descricao-horario">
-						        <span class="descricao-tarefa"><%= listaTarefas.get(i).getDescricao() %></span>
-						        <span class="horario-tarefa">(<%= listaTarefas.get(i).getHorario() %>)</span>
-						    </div>
+							<span class="nome-tarefa"><%=listaTarefas.get(i).getNome()%></span>
+							<div class="descricao-horario">
+								<span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
+								<div class="horario-icon-container">
+									<img src="images/hora.jpg" alt="Descrição da imagem"
+										class="imagem-horario"> <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%>
+									</span>
+								</div>
+							</div>
 						</div>
 					</li>
 					<%
@@ -152,11 +171,15 @@
 					%>
 					<li>
 						<div class="tarefa">
-						    <span class="nome-tarefa"><%= listaTarefas.get(i).getNome() %></span>
-						    <div class="descricao-horario">
-						        <span class="descricao-tarefa"><%= listaTarefas.get(i).getDescricao() %></span>
-						        <span class="horario-tarefa">(<%= listaTarefas.get(i).getHorario() %>)</span>
-						    </div>
+							<span class="nome-tarefa"><%=listaTarefas.get(i).getNome()%></span>
+							<div class="descricao-horario">
+								<span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
+								<div class="horario-icon-container">
+									<img src="images/hora.jpg" alt="Descrição da imagem"
+										class="imagem-horario"> <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%>
+									</span>
+								</div>
+							</div>
 						</div>
 					</li>
 					<%
@@ -179,11 +202,15 @@
 					%>
 					<li>
 						<div class="tarefa">
-						    <span class="nome-tarefa"><%= listaTarefas.get(i).getNome() %></span>
-						    <div class="descricao-horario">
-						        <span class="descricao-tarefa"><%= listaTarefas.get(i).getDescricao() %></span>
-						        <span class="horario-tarefa">(<%= listaTarefas.get(i).getHorario() %>)</span>
-						    </div>
+							<span class="nome-tarefa"><%=listaTarefas.get(i).getNome()%></span>
+							<div class="descricao-horario">
+								<span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
+								<div class="horario-icon-container">
+									<img src="images/hora.jpg" alt="Descrição da imagem"
+										class="imagem-horario"> <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%>
+									</span>
+								</div>
+							</div>
 						</div>
 					</li>
 					<%
@@ -193,7 +220,7 @@
 					<%
 					}
 					%>
-				</ul> <a href="manage?dia_semana=Sabado" class="gerenciar-button">Gerenciar</a>
+				</ul> <a href="manage?dia_semana=Sábado" class="gerenciar-button">Gerenciar</a>
 			</td>
 			<td class="coluna">
 				<ul>
@@ -206,11 +233,15 @@
 					%>
 					<li>
 						<div class="tarefa">
-						    <span class="nome-tarefa"><%= listaTarefas.get(i).getNome() %></span>
-						    <div class="descricao-horario">
-						        <span class="descricao-tarefa"><%= listaTarefas.get(i).getDescricao() %></span>
-						        <span class="horario-tarefa">(<%= listaTarefas.get(i).getHorario() %>)</span>
-						    </div>
+							<span class="nome-tarefa"><%=listaTarefas.get(i).getNome()%></span>
+							<div class="descricao-horario">
+								<span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
+								<div class="horario-icon-container">
+									<img src="images/hora.jpg" alt="Descrição da imagem"
+										class="imagem-horario"> <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%>
+									</span>
+								</div>
+							</div>
 						</div>
 					</li>
 					<%

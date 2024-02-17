@@ -1,7 +1,7 @@
 
 body {
-    font-family: 'Aleo', sans-serif;
-    background-image: url('../images/fundo3.jpg');
+    font-family: "Nunito", sans-serif;
+    background-image: url('../images/fundo-calendario.webp');
     background-size: cover;
 
 }
@@ -13,6 +13,10 @@ h1 {
     max-width: 180px; /* Define o tamanho máximo da coluna */
     word-wrap: break-word; /* Quebra de palavra */
 }
+
+.coluna:first-child {
+    border-left: 2px solid black; /* Adiciona uma linha sólida preta à esquerda da primeira coluna */
+}
 table {
     width: 80%;
     margin: 0 auto;
@@ -23,6 +27,11 @@ th, td {
     text-align: center; 
     border-right: 2px solid black;
 }
+
+th:first-child {
+    border-left: 2px solid black; /* Adiciona uma linha sólida preta à esquerda da primeira coluna */
+}
+
 .coluna ul {
     list-style-type: none;
     padding: 0;
@@ -35,13 +44,23 @@ th, td {
     margin-bottom: 15px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona sombra sutil */
+    width: 150px; /* Define um tamanho fixo para a largura */
+    display: flex; /* Torna o contêiner flexível */
+    flex-direction: column; /* Empilha os itens verticalmente */
+    justify-content: space-between; /* Distribui o espaço uniformemente entre os itens */
 }
+
 
 .descricao-horario {
     display: flex;
     flex-direction: column;
 }
 
+.horario-icon-container {
+    display: flex; /* Torna o contêiner flexível */
+    align-items: center; /* Alinha os itens verticalmente */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+}
 .nome-tarefa {
     font-size: 18px;
     font-weight: bold;
@@ -56,8 +75,14 @@ th, td {
 }
 
 .horario-tarefa {
-    font-size: 12px;
-    color: #888;
+	margin-left: 5px;
+}
+
+.imagem-horario {
+    width: 20px; /* Define a largura da imagem */
+    height: 20px; /* Define a altura da imagem */
+    margin-right: 5px; /* Adiciona margem à direita para espaçamento */
+    /* Adicione outras propriedades de estilo conforme necessário */
 }
 
 
@@ -71,4 +96,28 @@ th, td {
     display: inline-block;
     margin-top: 10px;
     text-decoration: none;
+}
+.voltar-button {
+    padding: 5px 10px;
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+.voltar-button img {
+    width: 35px; /* largura desejada */
+    height: auto; /* altura ajustada automaticamente para manter a proporção */
+    border-radius: 55%; /* borda circular */
+    padding: 5px; /* espaçamento interno */
+}
+
+/* Estilo ao passar o mouse sobre a imagem */
+.voltar-button img:hover {
+    opacity: 0.8; /* Reduzir a opacidade ao passar o mouse */
+    transition: opacity 0.3s ease; /* Adicionar transição suave */
 }

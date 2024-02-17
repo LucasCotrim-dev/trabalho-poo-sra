@@ -1,58 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/homepage.css">
-    <title>Homepage</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles/homepage.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@95.3,300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+	rel="stylesheet">
+<title>Homepage</title>
 </head>
 <body>
-    <header>
-        <nav>
-            <div id="logo-container">
-                <img src="images/Logo.svg" alt="Logo" class="logo">
-            </div>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Funcionalidades</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Disponibilidade</a></li>
-            </ul>
-            <ul id="login-cadastro">
-                <li><a href="login.html" class="button-link">Login</a></li>
-                <li><a href="cadastro.html" class="button-link">Cadastro</a></li>
-            </ul>
-        </nav>
-    </header>
+	<header>
+		<nav>
+			<div id="logo-container">
+				<img src="images/Logo.svg" alt="Logo" class="logo">
+			</div>
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Funcionalidades</a></li>
+				<li><a href="#">Sobre</a></li>
+				<li><a href="#">Disponibilidade</a></li>
+			</ul>
+			<ul id="login-cadastro">
+				<li><a href="login.html" class="button-link">Login</a></li>
+				<li><a href="cadastro.html" class="button-link">Cadastro</a></li>
+			</ul>
+		</nav>
+	</header>
 
-    <section id="welcome" class="section-background welcome">
-    	<h1>Rotinify:Slogan </h1>
-    	<p>Conteúdo da página.</p>
+	<section id="welcome" class="section-background welcome">
+		<h2>Rotinify: simplificando o dia a dia.</h2>
+		<p>Conteúdo da página.</p>
 	</section>
-	
+
 
 	<section id="features" class="section-background features">
-	    <h2>Funcionalidades</h2>
-	    <ul>
-	        <li>Funcionalidade 1</li>
-	        <li>Funcionalidade 2</li>
-	        <li>Funcionalidade 3</li>
-	    </ul>
+		<h2>Funcionalidades</h2>
+		<ul>
+			<li>Criação de Tarefas</li>
+			<li>edição da Rotina</li>
+			<li>Exibição em Calendário Semanal</li>
+			<li>Exibição em Calendário Visual</li>
+		</ul>
 	</section>
 
 	<section id="about" class="section-background about">
-	    <h2>Sobre o Site</h2>
-	    <p>Texto breve sobre o site.</p>
-	    <a href="#" class="button-link">Cadastrar</a>
+		<div class="about-content flex-container">
+			<div class="about-text">
+				<h1>Gerencie suas tarefas facilmente</h1>
+				<p>Gerencie sua rotina diária de forma simples e eficaz com o
+					Rotinify.</p>
+				<p>O sucesso começa com uma rotina bem organizada! A vida de
+					pessoas autistas pode ser complexa, e é importante ter uma rotina
+					estruturada para se sentir seguro e produtivo. O Rotinify está aqui
+					para ajudar, oferecendo uma plataforma intuitiva para criar e
+					gerenciar suas tarefas diárias.</p>
+				<a href="cadastro.html" class="button-link">Cadastre-se agora</a>
+			</div>
+			<div class="about-image">
+				<img src="images/hp1.png" alt="hp1">
+			</div>
+		</div>
 	</section>
-	
+
 	<section id="mobile" class="section-background mobile">
-	    <h2>Disponibilidade para Celular</h2>
-	    <p>O site está disponível para dispositivos móveis, proporcionando uma experiência fácil e acessível onde quer que você esteja.</p>
+		<h2>Disponibilidade para Celular</h2>
+		<p>O site está disponível para dispositivos móveis, proporcionando
+			uma experiência fácil e acessível onde quer que você esteja.</p>
 	</section>
-	
-    <footer>
-        <p>&copy; 2024 ROTINIFY. Todos os direitos reservados.</p>
-    </footer>
+
+	<footer>
+		<p>&copy; 2024 ROTINIFY. Todos os direitos reservados.</p>
+	</footer>
 </body>
 </html>

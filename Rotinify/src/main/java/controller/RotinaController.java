@@ -77,7 +77,8 @@ public class RotinaController extends HttpServlet {
 	    
 	    tarefaDao.adicionarTarefa(tarefa,idUsuario);  
 	    
-	    response.sendRedirect("manage?dia_semana=" + tarefa.getDia_semana());
+	    response.sendRedirect("manage?dia_semana=" + java.net.URLEncoder.encode(tarefa.getDia_semana(), "UTF-8"));
+
 	}
 	
 	protected void listarTarefa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {                
@@ -104,7 +105,8 @@ public class RotinaController extends HttpServlet {
 	    
 	    calendarioDao.atualizarTarefa(tarefa);
 	    
-	    response.sendRedirect("manage?dia_semana=" + tarefa.getDia_semana());
+	    response.sendRedirect("manage?dia_semana=" + java.net.URLEncoder.encode(tarefa.getDia_semana(), "UTF-8"));
+
 	}
 	
 	protected void removerTarefa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -115,7 +117,8 @@ public class RotinaController extends HttpServlet {
 		tarefaDao.deletarTarefa(tarefa);
 		calendarioDao.removerTarefa(tarefa);
 		
-		String diaSemana = request.getParameter("dia_semana");
-	    response.sendRedirect("manage?dia_semana=" + diaSemana);
+		String diaSemana = java.net.URLEncoder.encode(request.getParameter("dia_semana"), "UTF-8");
+		response.sendRedirect("manage?dia_semana=" + diaSemana);
+
 	}
 }

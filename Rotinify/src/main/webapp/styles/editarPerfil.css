@@ -1,8 +1,9 @@
 @charset "utf-8";
 
 body {
-    font-family: 'Aleo', sans-serif;
-    background-color: #f5f5f5;
+    font-family: monospace, sans-serif;
+    background-image: url(images/background.png);
+    background-size: cover;
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,27 +12,51 @@ body {
     min-height: 100vh;
 }
 
+#container {
+    margin: auto;
+}
+
 .edit-profile-title {
+    display: flex;
+    justify-content: center;
     margin-top: 20px;
 }
 
 .profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    margin-top: 40px;
+    padding: 10px;
+    
+    background-color: #f2edede2;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* offsetX offsetY blurRadius spreadRadius color */
 }
 
 .profile-image-container {
+    margin-top: 20px;
     position: relative;
     display: inline-block;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .profile-image {
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     object-fit: cover;
     transition: filter 0.3s ease-in-out;
+    background-color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* offsetX offsetY blurRadius spreadRadius color */
+
+}
+
+.profile-image-circle {
+    width:  150px; /* Defina a largura desejada */
+    height:  150px; /* Defina a altura desejada */
+    border-radius:  50%; /* Isso fará com que a imagem seja exibida como um círculo */
+    object-fit: cover; /* Isso fará com que a imagem cubra todo o espaço do círculo sem distorcer */
 }
 
 .edit-text {
@@ -47,8 +72,12 @@ body {
     display: none;
 }
 
+#box-formulario{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
 .form-group {
-    margin-bottom: 20px;
     text-align: left;
 }
 
@@ -61,5 +90,37 @@ input[type="text"] {
     border: 1px solid #ccc;
     font-size: 16px;
     box-sizing: border-box;
-    margin-bottom: 10px; /* Adicionando margem inferior para separar os campos */
+    margin-bottom: 10px; 
 }
+
+.texto-formulario{
+    font-size: 17px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+#button-salvar{
+    height: 30px;
+    width: 100px;
+    background-color: rgba(89, 171, 89, 0.902);
+    border: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); 
+    font-size: medium;
+    margin-top: 10px;
+    margin-bottom:13px;
+    cursor: pointer;
+}
+
+#button-trocar-senha {
+    height: 30px;
+    width: 120px;
+    background-color: #007bff; 
+    border: none; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); 
+    font-size: medium; 
+    cursor: pointer; 
+    margin-top: 10px; 
+    margin-bottom: 13px; 
+}
+
+

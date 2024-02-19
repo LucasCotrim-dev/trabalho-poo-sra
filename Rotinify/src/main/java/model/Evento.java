@@ -1,44 +1,31 @@
 package model;
 
 public class Evento extends Tarefa {
-	 private int id;
-	 private String data;
-	 private CalendarioSemanal calendarioSemanal;
-	 
-	 public Evento() {
-		 
-	 }
-	 
-	 public Evento(int id, String data, CalendarioSemanal calendarioSemanal) {
-		super();
-		this.id = id;
-		this.data = data;
-		this.calendarioSemanal = calendarioSemanal;
-	}
+    private String data;
 
-	public int getId() {
-		return id;
-	}
+    public Evento() {
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public Evento(String nome, String descricao, String horario, String dia_semana, String data) {
+        super(nome, descricao, horario, dia_semana);
+        this.data = data;
+    }
 
-	public String getData() {
-		return data;
-	}
+    public Evento(int id, String nome, String descricao, String horario, String dia_semana, String data) {
+        super(id, nome, descricao, horario, dia_semana);
+        this.data = data;
+    }
 
-	public void setData(String data) {
-		this.data = data;
-	}
+    public Evento(int id, int usuario_id, String nome, String descricao, String horario, String dia_semana, String data) {
+        super(id, usuario_id, nome, descricao, horario, dia_semana);
+        this.data = data;
+    }
 
-	public CalendarioSemanal getCalendarioSemanal() {
-		return calendarioSemanal;
-	}
+    public String getData() {
+        return data;
+    }
 
-	public void setCalendarioSemanal(CalendarioSemanal calendarioSemanal) {
-		this.calendarioSemanal = calendarioSemanal;
-	}
-	 
-	 
+    public void setData(String data) {
+        this.data = data;
+    }
 }

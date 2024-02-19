@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ page import="model.Tarefa"%>
-<%@ page import="model.Evento"%>
 <%@ page import="java.util.ArrayList"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +13,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@95.3,300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
 	rel="stylesheet">
-<title>Calendário Semanal</title>
+<title>Calendário Visual</title>
 </head>
 <body>
 	<h1>Monte sua Rotina</h1>
@@ -31,7 +29,6 @@
 			<th>Sexta-feira</th>
 			<th>Sábado</th>
 			<th>Domingo</th>
-			<th>Eventos</th>
 		</tr>
 		<tr>
 			<td class="coluna">
@@ -50,7 +47,6 @@
 						<div class="tarefa">
 							<span class="nome-tarefa"><%=listaTarefas.get(i).getNome()%></span>
 							<div class="descricao-horario">
-								<span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
 								<div class="horario-icon-container">
 									<img src="images/hora.jpg" alt="Descrição da imagem"
 										class="imagem-horario"> <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%>
@@ -255,40 +251,6 @@
 					}
 					%>
 				</ul> <a href="manage?dia_semana=Domingo" class="gerenciar-button">Gerenciar</a>
-			</td>
-			<td class="coluna">
-				<ul>
-					<!-- Lista de eventos -->
-					<%
-					ArrayList<Evento> listaEventos = (ArrayList<Evento>) request.getAttribute("eventos");
-					%>
-					<%
-					if (listaEventos != null) {
-					%>
-					<%
-					for (int i = 0; i < listaEventos.size(); i++) {
-					%>
-					<li>
-						<div class="tarefa">
-							<span class="nome-tarefa"><%=listaEventos.get(i).getNome()%></span>
-							<div class="descricao-horario">
-								<span class="descricao-tarefa"><%=listaEventos.get(i).getDescricao()%></span>
-								<div class="horario-icon-container">
-									<img src="images/hora.jpg" alt="Descrição da imagem"
-										class="imagem-horario"> <span class="horario-tarefa"><%=listaEventos.get(i).getHorario()%>
-									</span>
-								</div>
-								<span class="horario-tarefa"><%=listaEventos.get(i).getData()%></span>
-							</div>
-						</div>
-					</li>
-					<%
-					}
-					%>
-					<%
-					}
-					%>
-				</ul> <a href="manageEvent" class="gerenciar-button">Gerenciar</a>
 			</td>
 		</tr>
 	</table>

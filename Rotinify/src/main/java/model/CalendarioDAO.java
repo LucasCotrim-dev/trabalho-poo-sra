@@ -23,8 +23,8 @@ public class CalendarioDAO extends TarefaDAO{
 			return null;
 		}
 	}
-	
-	public void atualizarTarefa(Tarefa tarefa) {
+	@Override
+	public void alterarTarefa(Tarefa tarefa) {
         String update = "UPDATE tarefa SET nome=?, descricao=?, horario=? WHERE id=?";
         try {
             Connection con = conectar();
@@ -40,15 +40,14 @@ public class CalendarioDAO extends TarefaDAO{
         }
     }
 	
-	
-	public ArrayList<Tarefa> listarTarefasDiaSemana(String diaSemana, int idUsuario) {
+	public ArrayList<Tarefa> listarTarefas(String diaSemana, int idUsuario) {
 	    ArrayList<Tarefa> tarefas = new ArrayList<>();
 	    String read = "SELECT id, nome, descricao, horario FROM tarefa WHERE dia_semana = ? AND usuario_id = ? ORDER BY horario";
 	    try {
 	        Connection con = conectar();
 	        PreparedStatement pst = con.prepareStatement(read);
 	        pst.setString(1, diaSemana);
-	        pst.setInt(2, idUsuario); // Define o ID do usuário
+	        pst.setInt(2, idUsuario); 
 	        ResultSet rs = pst.executeQuery();
 	        while(rs.next()) {
 	            int id = rs.getInt("id");

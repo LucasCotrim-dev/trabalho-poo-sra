@@ -26,7 +26,7 @@
     <div class="menu-container">
         <div class="menu-options">
             <a href="main" class="menu-option" data-text="Simples, fácil e intuitívo">Calendário Básico</a>
-            <a href="calendarioComImagens.html" class="menu-option" data-text="Recomendado para Crianças">Calendário Visual</a>
+            <a href="calendarioVisual.jsp" class="menu-option" data-text="Recomendado para Crianças">Calendário Visual</a>
             <a href="editarPerfil.jsp" class="menu-option" data-text="Personalização e Design">Edição de Perfil</a>
         </div>
     </div>

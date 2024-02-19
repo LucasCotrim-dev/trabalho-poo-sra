@@ -16,7 +16,7 @@
         <form action="insert">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" required>
-
+ 
             <label for="descricao">Descrição:</label>
             <textarea id="descricao" name="descricao"></textarea>
 
@@ -35,7 +35,7 @@
 				<option value="Domingo" <%= (request.getParameter("dia_semana") != null && request.getParameter("dia_semana").equals("Domingo")) ? "selected" : "" %>>Domingo</option>
 			</select>
             
-            <button type="submit">Criar Tarefa</button>
+            <button type="submit">Adicionar Tarefa</button>
         </form>
     </div>
 </body>

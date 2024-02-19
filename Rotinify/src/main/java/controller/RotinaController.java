@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import model.Tarefa;
 import model.TarefaDAO;
 import model.CalendarioDAO;
+import model.Evento;
+import model.EventoDAO;
+
 
 @WebServlet(urlPatterns = {"/RotinaController","/manage", "/main", "/insert", "/select", "/update", "/delete"})
 public class RotinaController extends HttpServlet {
@@ -20,6 +23,8 @@ public class RotinaController extends HttpServlet {
 	TarefaDAO tarefaDao = new TarefaDAO();
 	Tarefa tarefa = new Tarefa();
 	CalendarioDAO calendarioDao = new CalendarioDAO();
+	EventoDAO eventoDao = new EventoDAO();
+    Evento evento = new Evento();
        
     public RotinaController() {
         super();
@@ -45,9 +50,11 @@ public class RotinaController extends HttpServlet {
 	
 	
 	protected void tarefasCalendario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    int idUsuario = (int) request.getSession().getAttribute("idUsuario"); // Obtém o ID do usuário da sessão
-	    ArrayList<Tarefa> listaTarefas = tarefaDao.listarTarefas(idUsuario); // Lista as tarefas específicas do usuário
+	    int idUsuario = (int) request.getSession().getAttribute("idUsuario"); 
+	    ArrayList<Tarefa> listaTarefas = tarefaDao.listarTarefas(idUsuario);
+	    ArrayList<Evento> listaEventos = eventoDao.listarEventos(idUsuario);
 	    request.setAttribute("tarefas", listaTarefas);
+	    request.setAttribute("eventos", listaEventos);
 	    RequestDispatcher rd = request.getRequestDispatcher("calendarioSemanal.jsp");
 	    rd.forward(request, response);
 	}
@@ -56,7 +63,7 @@ public class RotinaController extends HttpServlet {
 	    int idUsuario = (int) request.getSession().getAttribute("idUsuario"); // Obtém o ID do usuário da sessão
 	    String diaSelecionado = request.getParameter("dia_semana");
 	    if (diaSelecionado != null) { 
-	        ArrayList<Tarefa> listaTarefas = calendarioDao.listarTarefasDiaSemana(diaSelecionado, idUsuario); // Usando o método modificado do CalendarioDAO
+	        ArrayList<Tarefa> listaTarefas = calendarioDao.listarTarefas(diaSelecionado, idUsuario); // Usando o método modificado do CalendarioDAO
 	        request.setAttribute("tarefas", listaTarefas);
 	    }
 	    request.setAttribute("diaSelecionado", diaSelecionado != null ? diaSelecionado : ""); // Passa o dia selecionado para o JSP
@@ -97,13 +104,11 @@ public class RotinaController extends HttpServlet {
 		tarefa.setNome(request.getParameter("nome"));
 	    tarefa.setDescricao(request.getParameter("descricao"));
 	    tarefa.setHorario(request.getParameter("horario"));
-	    tarefa.setDia_semana(request.getParameter("dia_semana"));
-	    
-	    
+	    tarefa.setDia_semana(request.getParameter("dia_semana")); 
 	    
 	    tarefaDao.alterarTarefa(tarefa);
 	    
-	    calendarioDao.atualizarTarefa(tarefa);
+	    calendarioDao.alterarTarefa(tarefa);
 	    
 	    response.sendRedirect("manage?dia_semana=" + java.net.URLEncoder.encode(tarefa.getDia_semana(), "UTF-8"));
 
@@ -112,7 +117,6 @@ public class RotinaController extends HttpServlet {
 	protected void removerTarefa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		tarefa.setId(id);
-		
 		
 		tarefaDao.deletarTarefa(tarefa);
 		calendarioDao.removerTarefa(tarefa);

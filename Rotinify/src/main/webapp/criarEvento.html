@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles/criarTarefa.css">
+    <title>Criar Tarefa</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Criar Tarefa</h1>
+
+        <form action="insertEvent">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+ 
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao"></textarea>
+
+            <label for="horario">Horário:</label>
+            <input type="time" id="horario" name="horario" required>
+            
+            
+            <label for="dia_semana">Dia da Semana:</label>
+			<select id="dia_semana" name="dia_semana" required>
+				<option>Segunda-feira</option>
+				<option>Terça-feira</option>
+				<option>Quarta-feira</option>
+				<option>Quinta-feira</option>
+				<option>Sexta-feira</option>
+				<option>Sábado</option>
+				<option>Domingo</option>
+			</select>	
+			
+            <label for="data">Data:</label>
+    		<input type="date" id="data" name="data" required>
+    	
+            <button type="submit">Adicionar Evento</button>
+        </form>
+    </div>
+</body>
+
+</html>

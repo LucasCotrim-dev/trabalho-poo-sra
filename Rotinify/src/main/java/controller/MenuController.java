@@ -21,7 +21,8 @@ import model.UsuarioDAO;
 @MultipartConfig
 public class MenuController extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    UsuarioDAO usuarioDao = new UsuarioDAO ();
+    UsuarioDAO usuarioDao = new UsuarioDAO();
+    UsuarioAutista usuarioAutista = new UsuarioAutista();
 
     public MenuController() {
         super();
@@ -64,7 +65,7 @@ public class MenuController extends HttpServlet {
         usuario.setNome(nome);
 
         // Atualiza as informações do usuário autista (se existirem)
-        UsuarioAutista usuarioAutista = (UsuarioAutista) session.getAttribute("usuarioAutista");
+         usuarioAutista = (UsuarioAutista) session.getAttribute("usuarioAutista");
         if (usuarioAutista != null) {
             usuarioAutista.setCuidador(cuidador);
         }

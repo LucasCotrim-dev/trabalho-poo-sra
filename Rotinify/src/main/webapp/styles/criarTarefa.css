@@ -55,6 +55,26 @@ button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
+input[type="date"],
+select#dia_semana {
+    width: calc(50% - 10px); /* Define a largura dos inputs para ocupar metade da largura do container */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+/* Ajuste de margem para os inputs */
+input[type="date"] {
+    margin-right: 10px; /* Adiciona uma margem à direita para separar os inputs */
+}
+
+select#dia_semana {
+    margin-left: 10px; /* Adiciona uma margem à esquerda para separar os inputs */
+}
+
 textarea {
     resize: vertical;
     min-height: 100px;

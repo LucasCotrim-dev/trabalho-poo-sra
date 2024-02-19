@@ -79,10 +79,10 @@ th:first-child {
 }
 
 .imagem-horario {
-    width: 20px; /* Define a largura da imagem */
-    height: 20px; /* Define a altura da imagem */
-    margin-right: 5px; /* Adiciona margem à direita para espaçamento */
-    /* Adicione outras propriedades de estilo conforme necessário */
+    width: 20px; 
+    height: 20px; 
+    margin-right: 5px;
+
 }
 
 

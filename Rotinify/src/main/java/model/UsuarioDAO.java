@@ -23,7 +23,7 @@ public class UsuarioDAO {
 		}
 	}
 	
-	public void cadastroUsuario(Usuario usuario, UsuarioAutista usuarioAutista) {
+	public void cadastroUsuario(Usuario usuario) {
 		String create = "INSERT INTO Usuario (nome, email, senha, cuidador) values (?,?,?,?)";
 		try {
 			Connection con = conectar();
@@ -32,7 +32,7 @@ public class UsuarioDAO {
 			pst.setString(1, usuario.getNome());
 			pst.setString(2, usuario.getEmail());
 			pst.setString(3, usuario.getSenha());
-			pst.setString(4, usuarioAutista.getCuidador());
+			pst.setString(4, usuario.getCuidador());
 			pst.executeUpdate();
 			con.close();
 		} catch (Exception e) {
@@ -41,13 +41,14 @@ public class UsuarioDAO {
 	}
 	
 	public boolean verificarCadastro(Usuario usuario) {
-	    String query = "SELECT COUNT(*) FROM Usuario WHERE nome = ? OR email = ?";
+	    String query = "SELECT COUNT(*) FROM Usuario WHERE nome = ? OR email = ? OR cuidador = ?";
 	    
 	    try (Connection con = conectar();
 	         PreparedStatement pst = con.prepareStatement(query)) {
 
 	        pst.setString(1, usuario.getNome());
 	        pst.setString(2, usuario.getEmail());
+	        pst.setString(3, usuario.getCuidador());
 
 	        try (ResultSet rs = pst.executeQuery()) {
 	            if (rs.next()) {
@@ -122,6 +123,7 @@ public class UsuarioDAO {
 	                usuario.setNome(rs.getString("nome"));
 	                usuario.setEmail(rs.getString("email"));
 	                usuario.setSenha(rs.getString("senha"));
+	                usuario.setCuidador(rs.getString("cuidador"));
 	                usuario.setFotoPerfil(rs.getString("foto_url"));
 	                // Se houver mais campos a serem mapeados, você pode adicionar aqui
 	            }
@@ -132,9 +134,8 @@ public class UsuarioDAO {
 	    
 	    return usuario;
 	}
-	public void atualizarPerfil(int idUsuario, Usuario usuario, UsuarioAutista usuarioAutista, String fotoUrl) {
+	public void atualizarPerfil(int idUsuario, Usuario usuario, String fotoUrl) {
 	    String updateUsuario = "UPDATE Usuario SET nome = ?, email = ?, senha = ? WHERE id = ?";
-	    String updateUsuarioAutista = "UPDATE UsuarioAutista SET cuidador = ? WHERE id_usuario = ?";
 	    String updateFoto = "UPDATE Usuario SET foto_url = ? WHERE id = ?";
 	    
 	    try (Connection con = conectar()) {
@@ -147,12 +148,12 @@ public class UsuarioDAO {
 	        pstUsuario.executeUpdate();
 	        
 	        // Se o usuário for do tipo autista, atualiza informações adicionais
-	        if (usuarioAutista != null) {
+	        /*if (usuarioAutista != null) {
 	            PreparedStatement pstUsuarioAutista = con.prepareStatement(updateUsuarioAutista);
 	            pstUsuarioAutista.setString(1, usuarioAutista.getCuidador());
 	            pstUsuarioAutista.setInt(2, idUsuario);
 	            pstUsuarioAutista.executeUpdate();
-	        }
+	        }*/
 	        
 	        // Atualiza a URL da foto de perfil
 	        PreparedStatement pstFoto = con.prepareStatement(updateFoto);

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import model.Usuario;
-import model.UsuarioAutista;
+
 import model.UsuarioDAO;
 
 @WebServlet(urlPatterns = {"/MenuController","/menu"})
@@ -22,7 +22,6 @@ import model.UsuarioDAO;
 public class MenuController extends HttpServlet {
     private static final long serialVersionUID = 1L;
     UsuarioDAO usuarioDao = new UsuarioDAO();
-    UsuarioAutista usuarioAutista = new UsuarioAutista();
 
     public MenuController() {
         super();
@@ -63,15 +62,12 @@ public class MenuController extends HttpServlet {
         usuario.setEmail(email);
         usuario.setSenha(senha);
         usuario.setNome(nome);
+        usuario.setCuidador(cuidador);
 
         // Atualiza as informações do usuário autista (se existirem)
-         usuarioAutista = (UsuarioAutista) session.getAttribute("usuarioAutista");
-        if (usuarioAutista != null) {
-            usuarioAutista.setCuidador(cuidador);
-        }
 
         // Atualiza o banco de dados com as informações atualizadas
-        usuarioDao.atualizarPerfil(idUsuario, usuario, usuarioAutista, filePath);
+        usuarioDao.atualizarPerfil(idUsuario, usuario, filePath);
 
         response.sendRedirect("menu.jsp");
     }

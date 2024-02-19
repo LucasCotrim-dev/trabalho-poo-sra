@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="model.Usuario" %>
-<%@ page import="model.Usuario, model.UsuarioAutista" %>
 <% 
     Usuario usuario = (Usuario) session.getAttribute("usuario"); 
-    UsuarioAutista usuarioAutista = (UsuarioAutista) session.getAttribute("usuarioAutista");
 %>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -38,7 +36,7 @@
             </div>
             <div class="form-group">
                 <label for="cuidador">Nome do Cuidador:</label>
-                <input type="text" id="cuidador" name="cuidador" value="<%= usuarioAutista.getCuidador() %>">
+                <input type="text" id="cuidador" name="cuidador" value="<%= usuario.getCuidador() %>">
             </div>
             <button type="submit">Salvar</button>
         </form>

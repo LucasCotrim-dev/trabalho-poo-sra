@@ -5,27 +5,20 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+    private String cuidador;
     private String fotoPerfil;
     
     public Usuario() {
     	
     }
     
-    public Usuario(int id, String nome, String email, String senha) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.email = email;
-		this.senha = senha;
-	}
-    public Usuario(int id, String nome, String email, String senha,String fotoPerfil) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.email = email;
-		this.senha = senha;
-		this.fotoPerfil = fotoPerfil;
-	}
+    public Usuario(int id, String nome, String email, String senha, String cuidador) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.cuidador = cuidador;
+    }
 
 	public int getId() {
 		return id;
@@ -58,6 +51,14 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+	public String getCuidador() {
+        return cuidador;
+    }
+
+    public void setCuidador(String cuidador) {
+        this.cuidador = cuidador;
+    }
 	
 	public String getFotoPerfil() {
 		return fotoPerfil;

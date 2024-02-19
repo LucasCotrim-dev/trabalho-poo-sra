@@ -80,12 +80,17 @@ header {
 .button-link {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #fff;
+    background-color: #55DAA1;
     color: #000;
     text-decoration: none;
     border-radius: 5px;
-    border: 1px solid #fff;
+    border: 1px solid #55DAA1;
     margin-right: 20px;
+}
+
+.button-link:hover {
+    background-color: #4DB68C;
+    border-color: #4DB68C; 
 }
 
 nav {

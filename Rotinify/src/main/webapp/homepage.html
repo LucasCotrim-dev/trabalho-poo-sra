@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="styles/homepage.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" >
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link
 	href="https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@95.3,300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
 	rel="stylesheet">
@@ -18,10 +18,9 @@
 				<img src="images/Logo.svg" alt="Logo" class="logo">
 			</div>
 			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Funcionalidades</a></li>
-				<li><a href="#">Sobre</a></li>
-				<li><a href="#">Disponibilidade</a></li>
+				<li><a href="#id">Home</a></li>
+				<li><a href="#features">Funcionalidades</a></li>
+				<li><a href="#about">Sobre</a></li>
 			</ul>
 			<ul id="login-cadastro">
 				<li><a href="login.html" class="button-link">Login</a></li>
@@ -31,20 +30,40 @@
 	</header>
 
 	<section id="welcome" class="section-background welcome">
-		<h2>Rotinify: simplificando o dia a dia.</h2>
-		<p>Conteúdo da página.</p>
+		<h2>
+			Rotinify: simplificando <br>o seu dia a dia
+		</h2>
+		<p>Com uma abordagem centrada na pessoa, oferecemos ferramentas
+			intuitivas para criar e gerenciar sua rotina diária, desde tarefas
+			básicas até compromissos importantes.</p>
+		<div id="welcome-image">
+			<img src="images/ordem-de-servico.png" alt="Descrição da imagem">
+		</div>
 	</section>
 
 
 	<section id="features" class="section-background features">
-		<h2>Funcionalidades</h2>
-		<ul>
-			<li>Criação de Tarefas</li>
-			<li>edição da Rotina</li>
-			<li>Exibição em Calendário Semanal</li>
-			<li>Exibição em Calendário Visual</li>
-		</ul>
+		<h1>Funcionalidades</h1>
+		<div class="feature-grid">
+			<div class="feature">
+				<img src="images/lista-de-tarefas.png" alt="Funcionalidade 1">
+				<h3>Crie Tarefas</h3>
+			</div>
+			<div class="feature">
+				<img src="images/evento.png" alt="Funcionalidade 2">
+				<h3>Defina Eventos</h3>
+			</div>
+			<div class="feature">
+				<img src="images/calendario.png" alt="Funcionalidade 3">
+				<h3>Calendário Básico e Visual</h3>
+			</div>
+			<div class="feature">
+				<img src="images/editarPerfil.png" alt="Funcionalidade 4">
+				<h3>Personalize o Perfil</h3>
+			</div>
+		</div>
 	</section>
+
 
 	<section id="about" class="section-background about">
 		<div class="about-content flex-container">
@@ -64,13 +83,6 @@
 			</div>
 		</div>
 	</section>
-
-	<section id="mobile" class="section-background mobile">
-		<h2>Disponibilidade para Celular</h2>
-		<p>O site está disponível para dispositivos móveis, proporcionando
-			uma experiência fácil e acessível onde quer que você esteja.</p>
-	</section>
-
 	<footer>
 		<p>&copy; 2024 ROTINIFY. Todos os direitos reservados.</p>
 	</footer>

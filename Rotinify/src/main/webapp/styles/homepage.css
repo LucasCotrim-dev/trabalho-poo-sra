@@ -129,9 +129,8 @@ nav #login-cadastro {
 
 #features,
 #about,
-#welcome,
-#mobile {
-    padding: 15%;
+#welcome {
+    padding: 5%;
     text-align: center;
     margin: 0;
 }
@@ -150,10 +149,6 @@ nav #login-cadastro {
     margin-top: 20px; 
 }
 
-#mobile img {
-    max-width: 100%;
-    height: auto;
-}
 
 section {
     display: flex;
@@ -163,27 +158,44 @@ section {
 }
 
 .features {
-    background-color: #C4E8C1;
+    background: linear-gradient(to right, #63BCE1, #6387E1);
     
 }
 
-
-
-.mobile {
-    background-color: #63BCE1; 
-    
-}
 
 #welcome {
-    background-image: url('../images/seu-fundo.jpg'); 
+    background-color: rgba(99, 188, 225, 0.3);
     background-size: cover; 
     background-position: center; 
     height: 100vh; 
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     justify-content: center;
     align-items: center;
 }
+
+#welcome h2{
+	font-size:60px;
+	margin-bottom:50px;
+	margin-top:50px;
+}
+
+#welcome p{
+	font-size:30px;
+	margin-bottom:50px;
+}
+
+#welcome-image {
+    width: 300px; /* Defina a largura desejada para a div que envolve a imagem */
+    height: auto; /* Mantenha a altura automática para manter a proporção da imagem */
+}
+
+#welcome-image img {
+    width: 100%; /* A imagem ocupará toda a largura da div */
+    height: auto; /* Mantenha a altura automática para manter a proporção da imagem */
+}
+
 
 #logo-container {
     margin-right: auto; 
@@ -192,10 +204,31 @@ section {
 
 .flex-container {
     display: flex;
-    justify-content: flex-start; /* Alinha os itens no início do contêiner */
-    align-items: center; /* Alinha os itens verticalmente */
+    justify-content: flex-start; 
+    align-items: center; 
 }
 
+.feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+    margin-top: 20px;
+}
+
+.feature img {
+    max-width: 20%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.features h1 {
+    font-size: 30px;
+	margin-bottom: 35px;
+}
+
+.feature p {
+    font-size: 16px;
+}
 
 #about {
     padding: 30px 10%; 

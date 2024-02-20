@@ -9,22 +9,4 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
-  
-  <servlet>
-    <servlet-name>MainServlet</servlet-name>
-    <servlet-class>com.example.MainServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>MainServlet</servlet-name>
-    <url-pattern>/Rotinify/main</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-    <servlet-name>ManageEventServlet</servlet-name>
-    <servlet-class>com.example.ManageEventServlet</servlet-class>
-</servlet>
-<servlet-mapping>
-    <servlet-name>ManageEventServlet</servlet-name>
-    <url-pattern>/Rotinify/manageEvent</url-pattern>
-</servlet-mapping>
 </web-app>

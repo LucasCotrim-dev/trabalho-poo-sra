@@ -32,10 +32,10 @@ public class RotinaController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getServletPath();
-		if(action.equals("/main")) {
+		if(action.equals("/manage")) {
+	        tarefas(request,response);
+		}else if(action.equals("/main")) {
 			tarefasCalendario(request,response);
-		}else if(action.equals("/manage")) {
-			tarefas(request,response);
 		}else if(action.equals("/insert")) {
 			adicionarTarefa(request,response);	
 		}else if (action.equals("/select")) { 

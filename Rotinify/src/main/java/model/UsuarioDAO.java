@@ -134,83 +134,36 @@ public class UsuarioDAO {
 	    
 	    return usuario;
 	}
-	
-	public boolean verificarDuplicidade(Usuario usuario) {
-	    String query = "SELECT COUNT(*) FROM Usuario WHERE (nome = ? OR email = ?) AND id != ?";
+	public void atualizarPerfil(int idUsuario, Usuario usuario, String fotoUrl) {
+	    String updateUsuario = "UPDATE Usuario SET nome = ?, email = ?, senha = ? WHERE id = ?";
+	    String updateFoto = "UPDATE Usuario SET foto_url = ? WHERE id = ?";
 	    
-	    try (Connection con = conectar();
-	         PreparedStatement pst = con.prepareStatement(query)) {
-
-	        pst.setString(1, usuario.getNome());
-	        pst.setString(2, usuario.getEmail());
-	        pst.setInt(3, usuario.getId()); // Exclui o ID do usuário atual da verificação
-
-	        try (ResultSet rs = pst.executeQuery()) {
-	            if (rs.next()) {
-	                int count = rs.getInt(1);
-	                return count > 0; 
-	            }
-	        }
-	    } catch (Exception e) {
-	        System.out.println(e);
-	    }
-	    
-	    return false; 
-	}
-	
-	public void atualizarPerfil(int idUsuario, Usuario usuario) {
-	    String query = "UPDATE Usuario SET nome = ?, email = ?, cuidador = ?, foto_url = ? WHERE id = ?";
-	    
-	    try (Connection con = conectar();
-	         PreparedStatement pst = con.prepareStatement(query)) {
-
-	        pst.setString(1, usuario.getNome());
-	        pst.setString(2, usuario.getEmail());
-	        pst.setString(3, usuario.getCuidador());
-	        pst.setString(4, usuario.getFotoPerfil()); 
-	        pst.setInt(5, idUsuario);
-
-	        pst.executeUpdate();
+	    try (Connection con = conectar()) {
+	        // Atualiza informações básicas do usuário
+	        PreparedStatement pstUsuario = con.prepareStatement(updateUsuario);
+	        pstUsuario.setString(1, usuario.getNome());
+	        pstUsuario.setString(2, usuario.getEmail());
+	        pstUsuario.setString(3, usuario.getSenha());
+	        pstUsuario.setInt(4, idUsuario);
+	        pstUsuario.executeUpdate();
+	        
+	        // Se o usuário for do tipo autista, atualiza informações adicionais
+	        /*if (usuarioAutista != null) {
+	            PreparedStatement pstUsuarioAutista = con.prepareStatement(updateUsuarioAutista);
+	            pstUsuarioAutista.setString(1, usuarioAutista.getCuidador());
+	            pstUsuarioAutista.setInt(2, idUsuario);
+	            pstUsuarioAutista.executeUpdate();
+	        }*/
+	        
+	        // Atualiza a URL da foto de perfil
+	        PreparedStatement pstFoto = con.prepareStatement(updateFoto);
+	        pstFoto.setString(1, fotoUrl);
+	        pstFoto.setInt(2, idUsuario);
+	        pstFoto.executeUpdate();
+	        
 	    } catch (Exception e) {
 	        System.out.println("Erro ao atualizar perfil do usuário: " + e);
 	    }
-	}
-
-	
-	public void atualizarSenha(int idUsuario, String senhaNova) {
-	    String query = "UPDATE Usuario SET senha = ? WHERE id = ?";
-	    
-	    try (Connection con = conectar();
-	         PreparedStatement pst = con.prepareStatement(query)) {
-
-	        pst.setString(1, senhaNova);
-	        pst.setInt(2, idUsuario);
-
-	        pst.executeUpdate();
-	    } catch (Exception e) {
-	        System.out.println("Erro ao atualizar senha do usuário: " + e);
-	    }
-	}
-
-	public boolean verificarSenha(int idUsuario, String senhaAntiga) {
-	    String query = "SELECT senha FROM Usuario WHERE id = ?";
-	    
-	    try (Connection con = conectar();
-	         PreparedStatement pst = con.prepareStatement(query)) {
-
-	        pst.setInt(1, idUsuario);
-
-	        try (ResultSet rs = pst.executeQuery()) {
-	            if (rs.next()) {
-	                String senhaAtual = rs.getString("senha");
-	                return senhaAntiga.equals(senhaAtual);
-	            }
-	        }
-	    } catch (Exception e) {
-	        System.out.println("Erro ao verificar senha do usuário: " + e);
-	    }
-	    
-	    return false; // Em caso de erro ou usuário não encontrado, retorna falso
 	}
 
 

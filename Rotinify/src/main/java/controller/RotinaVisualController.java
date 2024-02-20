@@ -10,39 +10,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Tarefa;
-import model.TarefaDAO;
-import model.CalendarioDAO;
-import model.Evento;
-import model.EventoDAO;
+import model.TarefaVisual;
+import model.TarefaVisualDAO;
+import model.CalendarioVisualDAO;
 
 
-@WebServlet(urlPatterns = {"/RotinaController","/manage", "/main", "/insert", "/select", "/update", "/delete"})
-public class RotinaController extends HttpServlet {
+@WebServlet(urlPatterns = {"/RotinaVisualController","/manageVisual", "/mainVisual", "/insertVisual", "/selectVisual", "/updateVisual", "/deleteVisual"})
+public class RotinaVisualController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	TarefaDAO tarefaDao = new TarefaDAO();
-	Tarefa tarefa = new Tarefa();
-	CalendarioDAO calendarioDao = new CalendarioDAO();
-	EventoDAO eventoDao = new EventoDAO();
-    Evento evento = new Evento();
+	TarefaVisualDAO tarefaVisualDao = new TarefaVisualDAO();
+	TarefaVisual tarefaV = new TarefaVisual();
+	CalendarioVisualDAO calendarioVisualDao = new CalendarioVisualDAO();
        
-    public RotinaController() {
+    public RotinaVisualController() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getServletPath();
-		if(action.equals("/manage")) {
+		if(action.equals("/manageVisual")) {
 	        tarefas(request,response);
-		}else if(action.equals("/main")) {
+		}else if(action.equals("/mainVisual")) {
 			tarefasCalendario(request,response);
-		}else if(action.equals("/insert")) {
+		}else if(action.equals("/insertVisual")) {
 			adicionarTarefa(request,response);	
-		}else if (action.equals("/select")) { 
+		}else if (action.equals("/selectVisual")) { 
 	        listarTarefa(request, response);   
-	    }else if (action.equals("/update")) { 
+	    }else if (action.equals("/updateVisual")) { 
 	        editarTarefa(request, response);   
-	    }else if (action.equals("/delete")) { 
+	    }else if (action.equals("/deleteVisual")) { 
 	        removerTarefa(request, response);   
 	    }
 	}
@@ -51,11 +47,9 @@ public class RotinaController extends HttpServlet {
 	
 	protected void tarefasCalendario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    int idUsuario = (int) request.getSession().getAttribute("idUsuario"); 
-	    ArrayList<Tarefa> listaTarefas = tarefaDao.listarTarefas(idUsuario);
-	    ArrayList<Evento> listaEventos = eventoDao.listarEventos(idUsuario);
+	    ArrayList<TarefaVisual> listaTarefas = tarefaVisualDao.listarTarefas(idUsuario);
 	    request.setAttribute("tarefas", listaTarefas);
-	    request.setAttribute("eventos", listaEventos);
-	    RequestDispatcher rd = request.getRequestDispatcher("calendarioSemanal.jsp");
+	    RequestDispatcher rd = request.getRequestDispatcher("calendarioVisual.jsp");
 	    rd.forward(request, response);
 	}
 
@@ -63,11 +57,11 @@ public class RotinaController extends HttpServlet {
 	    int idUsuario = (int) request.getSession().getAttribute("idUsuario"); // Obtém o ID do usuário da sessão
 	    String diaSelecionado = request.getParameter("dia_semana");
 	    if (diaSelecionado != null) { 
-	        ArrayList<Tarefa> listaTarefas = calendarioDao.listarTarefas(diaSelecionado, idUsuario); // Usando o método modificado do CalendarioDAO
+	        ArrayList<TarefaVisual> listaTarefas = calendarioVisualDao.listarTarefas(diaSelecionado, idUsuario); // Usando o método modificado do CalendarioDAO
 	        request.setAttribute("tarefas", listaTarefas);
 	    }
 	    request.setAttribute("diaSelecionado", diaSelecionado != null ? diaSelecionado : ""); // Passa o dia selecionado para o JSP
-	    RequestDispatcher rd = request.getRequestDispatcher("rotina.jsp");
+	    RequestDispatcher rd = request.getRequestDispatcher("rotinaVisual.jsp");
 	    rd.forward(request, response);
 	}
 
@@ -77,52 +71,49 @@ public class RotinaController extends HttpServlet {
 	protected void adicionarTarefa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		int idUsuario = (int) request.getSession().getAttribute("idUsuario");
 		System.out.println("ID do usuário obtido da sessão: " + idUsuario);
-	    tarefa.setNome(request.getParameter("nome"));
-	    tarefa.setDescricao(request.getParameter("descricao"));
-	    tarefa.setHorario(request.getParameter("horario"));
-	    tarefa.setDia_semana(request.getParameter("dia_semana"));
+	    tarefaV.setCaminho_imagem(request.getParameter("imagem"));
+	    tarefaV.setHorario(request.getParameter("horario"));
+	    tarefaV.setDia_semana(request.getParameter("dia_semana"));
 	    
-	    tarefaDao.adicionarTarefa(tarefa,idUsuario);  
+	    tarefaVisualDao.adicionarTarefa(tarefaV,idUsuario);  
 	    
-	    response.sendRedirect("manage?dia_semana=" + java.net.URLEncoder.encode(tarefa.getDia_semana(), "UTF-8"));
+	    response.sendRedirect("manageVisual?dia_semana=" + java.net.URLEncoder.encode(tarefaV.getDia_semana(), "UTF-8"));
 
 	}
 	
 	protected void listarTarefa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {                
 	    int id = Integer.parseInt(request.getParameter("id"));
-	    tarefa.setId(id);
-	    tarefaDao.selecionarTarefa(tarefa);
-	    request.setAttribute("nome", tarefa.getNome());
-	    request.setAttribute("descricao", tarefa.getDescricao());
-	    request.setAttribute("horario", tarefa.getHorario());
-	    request.setAttribute("dia_semana", tarefa.getDia_semana());
-	    RequestDispatcher rd = request.getRequestDispatcher("editarTarefa.jsp");
+	    tarefaV.setId(id);
+	    tarefaVisualDao.selecionarTarefa(tarefaV);
+	    request.setAttribute("imagem", tarefaV.getCaminho_imagem());
+	    request.setAttribute("horario", tarefaV.getHorario());
+	    request.setAttribute("dia_semana", tarefaV.getDia_semana());
+	    RequestDispatcher rd = request.getRequestDispatcher("editarTarefaVisual.jsp");
 	    rd.forward(request, response);
 	}
 	
 	protected void editarTarefa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		tarefa.setNome(request.getParameter("nome"));
-	    tarefa.setDescricao(request.getParameter("descricao"));
-	    tarefa.setHorario(request.getParameter("horario"));
-	    tarefa.setDia_semana(request.getParameter("dia_semana")); 
+		tarefaV.setCaminho_imagem(request.getParameter("imagem"));
+	    tarefaV.setHorario(request.getParameter("horario"));
+	    tarefaV.setDia_semana(request.getParameter("dia_semana")); 
 	    
-	    tarefaDao.alterarTarefa(tarefa);
+	    tarefaVisualDao.alterarTarefa(tarefaV);
 	    
-	    calendarioDao.alterarTarefa(tarefa);
+	    calendarioVisualDao.alterarTarefa(tarefaV);
 	    
-	    response.sendRedirect("manage?dia_semana=" + java.net.URLEncoder.encode(tarefa.getDia_semana(), "UTF-8"));
+	    response.sendRedirect("manageVisual?dia_semana=" + java.net.URLEncoder.encode(tarefaV.getDia_semana(), "UTF-8"));
 
 	}
 	
 	protected void removerTarefa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		tarefa.setId(id);
+		tarefaV.setId(id);
 		
-		tarefaDao.deletarTarefa(tarefa);
-		calendarioDao.removerTarefa(tarefa);
+		tarefaVisualDao.deletarTarefa(tarefaV);
+		calendarioVisualDao.removerTarefa(tarefaV);
 		
 		String diaSemana = java.net.URLEncoder.encode(request.getParameter("dia_semana"), "UTF-8");
-		response.sendRedirect("manage?dia_semana=" + diaSemana);
+		response.sendRedirect("manageVisual?dia_semana=" + diaSemana);
 
 	}
 }

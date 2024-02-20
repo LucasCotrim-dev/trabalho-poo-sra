@@ -19,15 +19,6 @@ public class Usuario {
         this.senha = senha;
         this.cuidador = cuidador;
     }
-    
-    public Usuario(int id, String nome, String email, String senha, String cuidador, String fotoPerfil) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.cuidador = cuidador;
-        this.fotoPerfil = fotoPerfil;
-    }
 
 	public int getId() {
 		return id;

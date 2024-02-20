@@ -1,20 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 
 <head>
+    <title>Editar Tarefa</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/criarTarefaVisual.css">
-    <title>Criar Tarefa</title>
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    window.onload = function() {
         var modal = document.getElementById("myModal");
         var closeButton = document.getElementsByClassName("close")[0];
 
-        if (closeButton) {
-            closeButton.onclick = function() {
-                modal.style.display = "none";
-            }
+        closeButton.onclick = function() {
+            modal.style.display = "none";
         }
 
         window.onclick = function(event) {
@@ -22,10 +20,11 @@
                 modal.style.display = "none";
             }
         }
-    });
+    }
 
     // Function to open the image popup modal
-    function openImagePopup() {
+    // Function to open the image popup modal
+function openImagePopup() {
     // Obtenha a div do modal
     var modal = document.getElementById("myModal");
 
@@ -50,39 +49,47 @@
 }
 
 
-    </script>
+</script>
 </head>
 
 <body>
 
     <div class="container">
-        <h1>Criar Tarefa</h1>
+        <h1>Editar Tarefa</h1>
+<img id="selectedImage" src="<%= request.getAttribute("imagem") %>" alt="Imagem Selecionada" style="display: <%= request.getAttribute("imagem") != null ? "block" : "none" %>">
+        <form action="updateVisual">
 
-        <!-- Add this line before the form -->
-        <img id="selectedImage" src="<%= request.getAttribute("imagem") %>" alt="Imagem Selecionada" style="display: <%= request.getAttribute("imagem") != null ? "block" : "none" %>">
-
-        <form action="insertVisual">
-            <!-- Hidden input field to store the image path -->
             <input type="hidden" id="imagem" name="imagem" value="<%= request.getAttribute("imagem") %>" required>
             <button type="button" onclick="openImagePopup()">Selecionar Imagem</button>
 
             <label for="horario">Horário:</label>
-            <input type="time" id="horario" name="horario" required>
+            <input type="time" id="horario" name="horario" value="<%= request.getAttribute("horario") !=null &&
+                !request.getAttribute("horario").equals("") ? request.getAttribute("horario") : "00:00" %>"
+                required>
 
             <label for="dia_semana">Dia da Semana:</label>
             <select id="dia_semana" name="dia_semana" required>
-                
-                
-                <option value="Segunda-feira" <%= (request.getParameter("dia_semana") != null && request.getParameter("dia_semana").equals("Segunda-feira")) ? "selected" : "" %>>Segunda-feira</option>
-                <option value="Terça-feira" <%= (request.getParameter("dia_semana") != null && request.getParameter("dia_semana").equals("Terça-feira")) ? "selected" : "" %>>Terça-feira</option>
-                <option value="Quarta-feira" <%= (request.getParameter("dia_semana") != null && request.getParameter("dia_semana").equals("Quarta-feira")) ? "selected" : "" %>>Quarta-feira</option>
-                <option value="Quinta-feira" <%= (request.getParameter("dia_semana") != null && request.getParameter("dia_semana").equals("Quinta-feira")) ? "selected" : "" %>>Quinta-feira</option>
-                <option value="Sexta-feira" <%= (request.getParameter("dia_semana") != null && request.getParameter("dia_semana").equals("Sexta-feira")) ? "selected" : "" %>>Sexta-feira</option>
-                <option value="Sábado" <%= (request.getParameter("dia_semana") != null && request.getParameter("dia_semana").equals("Sábado")) ? "selected" : "" %>>Sábado</option>
-                <option value="Domingo" <%= (request.getParameter("dia_semana") != null && request.getParameter("dia_semana").equals("Domingo")) ? "selected" : "" %>>Domingo</option>
+                <option value="Segunda-feira" <%= (request.getParameter("dia_semana") != null &&
+                    request.getParameter("dia_semana").equals("Segunda-feira")) ? "selected" : "" %>>Segunda-feira
+                </option>
+                <option value="Terça-feira" <%= (request.getParameter("dia_semana") != null &&
+                    request.getParameter("dia_semana").equals("Terça-feira")) ? "selected" : "" %>>Terça-feira
+                </option>
+                <option value="Quarta-feira" <%= (request.getParameter("dia_semana") != null &&
+                    request.getParameter("dia_semana").equals("Quarta-feira")) ? "selected" : "" %>>Quarta-feira
+                </option>
+                <option value="Quinta-feira" <%= (request.getParameter("dia_semana") != null &&
+                    request.getParameter("dia_semana").equals("Quinta-feira")) ? "selected" : "" %>>Quinta-feira
+                </option>
+                <option value="Sexta-feira" <%= (request.getParameter("dia_semana") != null &&
+                    request.getParameter("dia_semana").equals("Sexta-feira")) ? "selected" : "" %>>Sexta-feira
+                </option>
+                <option value="Sábado" <%= (request.getParameter("dia_semana") != null &&
+                    request.getParameter("dia_semana").equals("Sábado")) ? "selected" : "" %>>Sábado</option>
+                <option value="Domingo" <%= (request.getParameter("dia_semana") != null &&
+                    request.getParameter("dia_semana").equals("Domingo")) ? "selected" : "" %>>Domingo</option>
             </select>
-            
-            <button type="submit">Adicionar Tarefa</button>
+            <button type="submit">Salvar Tarefa</button>
         </form>
     </div>
 
@@ -100,7 +107,9 @@
             <button class="image-button"><img src="images/imagensRotina/Estudar.svg" alt="Estudar"></button>
             <button class="image-button"><img src="images/imagensRotina/Jantar.svg" alt="Jantar"></button>
             <button class="image-button"><img src="images/imagensRotina/TrocarRoupa.svg" alt="Trocar de Roupa"></button>
+            <span></span>
         </div>
+         
     </div>
 </body>
 

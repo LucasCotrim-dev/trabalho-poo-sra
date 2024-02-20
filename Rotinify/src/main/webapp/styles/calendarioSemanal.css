@@ -1,6 +1,6 @@
 
 body {
-    font-family: monospace, sans-serif;
+    font-family: "Nunito", sans-serif;
     background-image: url('../images/fundo-calendario.webp');
     background-size: cover;
 
@@ -10,12 +10,12 @@ h1 {
 }
 
 .coluna {
-    max-width: 180px; 
-    word-wrap: break-word; 
+    max-width: 180px; /* Define o tamanho máximo da coluna */
+    word-wrap: break-word; /* Quebra de palavra */
 }
 
 .coluna:first-child {
-    border-left: 2px solid black; 
+    border-left: 2px solid black; /* Adiciona uma linha sólida preta à esquerda da primeira coluna */
 }
 table {
     width: 80%;
@@ -29,7 +29,7 @@ th, td {
 }
 
 th:first-child {
-    border-left: 2px solid black; 
+    border-left: 2px solid black; /* Adiciona uma linha sólida preta à esquerda da primeira coluna */
 }
 
 .coluna ul {
@@ -43,11 +43,11 @@ th:first-child {
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 150px; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: space-between; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona sombra sutil */
+    width: 150px; /* Define um tamanho fixo para a largura */
+    display: flex; /* Torna o contêiner flexível */
+    flex-direction: column; /* Empilha os itens verticalmente */
+    justify-content: space-between; /* Distribui o espaço uniformemente entre os itens */
 }
 
 

@@ -1,150 +1,97 @@
 body {
-    font-family: monospace, sans-serif;
-    background-image: url(images/background-rotinas.jpg);
-    background-size: cover;
-
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
     margin: 0;
-    display: flex;
-    align-items: center;
-    min-height: 100vh;
-    justify-content: center;
-
+    padding: 0;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
+    color: #333;
 }
 
-#box-tarefa-main{
-    display: flex; /* Usar flexbox para controlar o layout */
-    align-items: center; /* Alinhar os elementos verticalmente */
-    
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-#box-tarefa-main>p{
-    font-size: 30px;
-    margin: 20px;
-}
-
-
-.box-tarefa {
-    margin-top: 5px;
-    background-color: #ffffff;
-    
-    flex-grow: 1; 
-    height: 140px;
-    width: 500px;
-
-    max-width: 600px;
-    max-height: 200px;
-
-
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-#box-titulo-tarefa{
+a {
+    display: block;
     text-align: center;
-    background-color: #eff0f0;
-}
-
-#titulo-tarefa {   
-    font-size: 20px;
-    margin: 0;
-    padding: 3px;
-    color: #333333;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
-}
-
-.descricao-tarefa{
-    margin-top: 10px;
-    font-size: 17px;
-    margin-left: 20px;
-    margin-bottom: 0;
-
-}
-
-#box-botoes {
-    margin-right: 20px;
-    margin-bottom: 10px;
-    text-align: right; 
-}
-
-#box-botoes > a {
-    margin-left: 10px;
-    display: inline-block;
-    width: 100px;
-    width: 90px; /* Ajusta a largura dos botões */
-    height: 25px; /* Ajusta a altura dos botões */
-    line-height: 25px; /* Centraliza o texto verticalmente dentro do botão */
-
-    
+    margin-bottom: 70px;
+    margin-top: 40px;
+    color: #007bff;
     text-decoration: none;
-    text-align: center;
-    font-size: 17px;
-    color: #000000;
+}
 
+.tarefa {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	margin: 20px auto 200px;    
+	max-width: 600px; 
+    position: relative;
+    margin-bottom: 60px; 
+}
+
+.tarefa h2 {
+    margin-top: 0;
+    color: #333;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: auto;
+    background: #f0f0f0;
+    border-radius: 20px;
+    padding: 5px 40px ;
+}
+
+.tarefa p {
+    margin-top: 40px; /* Adicionado espaço entre o título e a descrição */
+}
+
+.horario {
+    font-size: 30px; /* Aumenta o tamanho do horário */
+    color: #000; /* Define a cor preta */
+    position: absolute;
+    top: -40px; /* Ajuste para abaixar um pouco mais */
+    left: -80px;/* Ajuste para ficar fora do retângulo e ao lado */
+}
+
+.pergunta {
+    font-weight: bold;
+    color: #007bff;
     cursor: pointer;
 }
-
-
-.botoes {
-    text-decoration: none;
-    color: #000000;
-
-    border: none;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); 
-
-    cursor: pointer;
-}
-
-#box-botao-criar {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-}
-
-#botao-criar {
-    font-size: 17px;
-    padding: 8px;
-    background-color: rgba(89, 171, 89, 0.902);
-    margin: 10px;
-}
-
-#botao-criar:hover {
-    background-color: rgba(62, 117, 62, 0.902);
-}
-
-
-#botao-editar {
-    background-color: #5ea3ed;
-    border-radius: 3px;
-}
-
-#botao-editar:hover {
-    background-color: #4378b1;
-}
-
-
-#botao-excluir {
-    background-color: #f37373;
-    border-radius: 3px;
-}
-
-#botao-excluir:hover{
-    background-color: #b25b5b;
-}
-
-.no-tasks{
-    text-align: center;
-}
-
-#link-voltar{
-    text-align: center;
-}
-
-
 
 .no-tasks {
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
 }
+
+.excluir {
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    bottom: -50px;
+    right: 140px;
+    background: #dc3545;
+    border-radius: 10px;
+    padding: 5px 40px;
+}
+.editar {
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    bottom: -50px;
+    right: 10px;
+    background: #007bff;
+    border-radius: 10px;
+    padding: 5px 40px;
+}
+
+

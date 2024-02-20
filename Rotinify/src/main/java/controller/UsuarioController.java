@@ -81,17 +81,23 @@ public class UsuarioController extends HttpServlet {
 	        throws ServletException, IOException {
 	    int idUsuario = (int) request.getSession().getAttribute("idUsuario");
 
+	    // Obtenha os valores dos campos do request
 	    String nome = request.getParameter("nome");
 	    String email = request.getParameter("email");
 	    String senha = request.getParameter("senha");
-	    String cuidador = request.getParameter("cuidador");
+	    String cuidador = request.getParameter("cuidador"); // Certifique-se de que este campo esteja presente no formulário
+	    String caminhoImagem = request.getParameter("foto_url");
 
-	    Usuario usuarioAtualizado = new Usuario(idUsuario, nome, email, senha, cuidador);
+	    // Atualize o objeto usuário com os novos valores
+	    Usuario usuarioAtualizado = new Usuario(idUsuario, nome, email, senha, cuidador, caminhoImagem);
+
+	    // Verifique se há duplicidade
 	    if (usuarioDao.verificarDuplicidade(usuarioAtualizado)) {
 	        response.sendRedirect("editarPerfil.jsp?error=true");
 	        return;
 	    }
 
+	    // Atualize o perfil no banco de dados
 	    usuarioDao.atualizarPerfil(idUsuario, usuarioAtualizado);
 
 	    // Atualize o objeto usuário na sessão com as novas informações
@@ -100,6 +106,8 @@ public class UsuarioController extends HttpServlet {
 	    // Redirecione para a página JSP que exibe o perfil do usuário
 	    response.sendRedirect("menu.jsp");
 	}
+
+
 
 
 	protected void alterarSenha(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {

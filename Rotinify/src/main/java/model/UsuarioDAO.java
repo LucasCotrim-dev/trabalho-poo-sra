@@ -159,7 +159,7 @@ public class UsuarioDAO {
 	}
 	
 	public void atualizarPerfil(int idUsuario, Usuario usuario) {
-	    String query = "UPDATE Usuario SET nome = ?, email = ?, cuidador = ? WHERE id = ?";
+	    String query = "UPDATE Usuario SET nome = ?, email = ?, cuidador = ?, foto_url = ? WHERE id = ?";
 	    
 	    try (Connection con = conectar();
 	         PreparedStatement pst = con.prepareStatement(query)) {
@@ -167,7 +167,8 @@ public class UsuarioDAO {
 	        pst.setString(1, usuario.getNome());
 	        pst.setString(2, usuario.getEmail());
 	        pst.setString(3, usuario.getCuidador());
-	        pst.setInt(4, idUsuario);
+	        pst.setString(4, usuario.getFotoPerfil()); 
+	        pst.setInt(5, idUsuario);
 
 	        pst.executeUpdate();
 	    } catch (Exception e) {

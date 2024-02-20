@@ -7,49 +7,28 @@
     <link rel="stylesheet" type="text/css" href="styles/criarTarefaVisual.css">
     <title>Criar Tarefa</title>
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var modal = document.getElementById("myModal");
-        var closeButton = document.getElementsByClassName("close")[0];
+        function openImagePopup() {
+            // Obtenha a div do modal
+            var modal = document.getElementById("myModal");
 
-        if (closeButton) {
+            // Exiba o modal
+            modal.style.display = "flex";
+
+            // Obtenha o elemento que fecha o modal
+            var closeButton = document.getElementsByClassName("close")[0];
+
+            // Quando o usuário clicar no botão de fechar (x), feche o modal
             closeButton.onclick = function() {
                 modal.style.display = "none";
             }
-        }
 
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+            // Quando o usuário clicar em qualquer lugar fora do modal, feche-o
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
             }
         }
-    });
-
-    // Function to open the image popup modal
-    function openImagePopup() {
-    // Obtenha a div do modal
-    var modal = document.getElementById("myModal");
-
-    // Exiba o modal
-    modal.style.display = "flex";
-
-    // Adicione event listeners para os botões de imagem
-    var imageButtons = document.getElementsByClassName("image-button");
-    for (var i =  0; i < imageButtons.length; i++) {
-        imageButtons[i].addEventListener("click", function() {
-            // Atualize a imagem selecionada
-            var selectedImage = document.getElementById("selectedImage");
-            var clickedImageSrc = this.firstChild.src;
-            selectedImage.src = clickedImageSrc;
-            selectedImage.style.display = "block";
-            document.getElementById("imagem").value = clickedImageSrc;
-
-            // Feche o modal
-            modal.style.display = "none";
-        });
-    }
-}
-
-
     </script>
 </head>
 
@@ -58,20 +37,14 @@
     <div class="container">
         <h1>Criar Tarefa</h1>
 
-        <!-- Add this line before the form -->
-        <img id="selectedImage" src="<%= request.getAttribute("imagem") %>" alt="Imagem Selecionada" style="display: <%= request.getAttribute("imagem") != null ? "block" : "none" %>">
-
-        <form action="insertVisual">
-            <!-- Hidden input field to store the image path -->
-            <input type="hidden" id="imagem" name="imagem" value="<%= request.getAttribute("imagem") %>" required>
-            <button type="button" onclick="openImagePopup()">Selecionar Imagem</button>
+        <form action="insert">
+            <button type="button" onclick="openImagePopup()"> Selecionar Ação </button>
 
             <label for="horario">Horário:</label>
             <input type="time" id="horario" name="horario" required>
 
             <label for="dia_semana">Dia da Semana:</label>
             <select id="dia_semana" name="dia_semana" required>
-                
                 
                 <option value="Segunda-feira" <%= (request.getParameter("dia_semana") != null && request.getParameter("dia_semana").equals("Segunda-feira")) ? "selected" : "" %>>Segunda-feira</option>
                 <option value="Terça-feira" <%= (request.getParameter("dia_semana") != null && request.getParameter("dia_semana").equals("Terça-feira")) ? "selected" : "" %>>Terça-feira</option>
@@ -88,7 +61,6 @@
 
     <div id="myModal" class="modal" style="display: none;">
         <div class="modal-content">
-        <span class="close">&times;</span>
             <button class="image-button"><img src="images/imagensRotina/Acordar.svg" alt="Acordar"></button>
             <button class="image-button"><img src="images/imagensRotina/Almocar.svg" alt="Almoçar"></button>
             <button class="image-button"><img src="images/imagensRotina/Banho.svg" alt="Banho"></button>

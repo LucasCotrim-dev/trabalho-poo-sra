@@ -1,3 +1,5 @@
+//Classe que lida com a lógica das tarefas do calendário básico
+
 package controller;
 
 import java.io.IOException;
@@ -30,6 +32,7 @@ public class RotinaController extends HttpServlet {
         super();
     }
 
+	//Método que redireciona a página para realizar a ação selecionada (Listar tarefas, CRUD)
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getServletPath();
 		if(action.equals("/manage")) {
@@ -48,7 +51,7 @@ public class RotinaController extends HttpServlet {
 	}
 	
 	
-	
+	//Método que busca no banco de dados apenas as tarefas e os eventos pertencentes a este usuário
 	protected void tarefasCalendario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    int idUsuario = (int) request.getSession().getAttribute("idUsuario"); 
 	    ArrayList<Tarefa> listaTarefas = tarefaDao.listarTarefas(idUsuario);
@@ -59,6 +62,7 @@ public class RotinaController extends HttpServlet {
 	    rd.forward(request, response);
 	}
 
+	//Método que lista as tarefas criadas no calendário básico
 	protected void tarefas(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    int idUsuario = (int) request.getSession().getAttribute("idUsuario"); // Obtém o ID do usuário da sessão
 	    String diaSelecionado = request.getParameter("dia_semana");
@@ -71,9 +75,7 @@ public class RotinaController extends HttpServlet {
 	    rd.forward(request, response);
 	}
 
-
-
-	
+	//Os demais métodos abaixo realizam o CRUD
 	protected void adicionarTarefa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		int idUsuario = (int) request.getSession().getAttribute("idUsuario");
 		System.out.println("ID do usuário obtido da sessão: " + idUsuario);

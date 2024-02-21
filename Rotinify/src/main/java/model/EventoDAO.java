@@ -1,3 +1,4 @@
+//Classe para fazer o crud dos eventos no banco de dados, além de um método para listá-los
 package model;
 
 import java.sql.Connection;
@@ -24,6 +25,7 @@ public class EventoDAO extends TarefaDAO{
         }
     }
 
+    //Com exceção do listarEventos, todos os métodos abaixo são relacionados ao CRUD
     public void adicionarEvento(Evento evento, int idUsuario) {
         String create = "INSERT INTO Evento (nome, descricao, horario, dia_semana, data, usuario_id) VALUES (?,?,?,?,?,?)";
         try {

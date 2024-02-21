@@ -1,3 +1,4 @@
+//Classe para lidar com quaisquer interações entre o usuário e o banco de dados
 package model;
 
 import java.sql.Connection;
@@ -23,6 +24,7 @@ public class UsuarioDAO {
 		}
 	}
 	
+	//salvar os dados inseridos durante o cadastro no banco de dados 
 	public void cadastroUsuario(Usuario usuario) {
 		String create = "INSERT INTO Usuario (nome, email, senha, cuidador) values (?,?,?,?)";
 		try {
@@ -40,6 +42,7 @@ public class UsuarioDAO {
 		}
 	}
 	
+	//checagem de credenciais durante o cadastro para evitar duplicações
 	public boolean verificarCadastro(Usuario usuario) {
 	    String query = "SELECT COUNT(*) FROM Usuario WHERE nome = ? OR email = ? OR cuidador = ?";
 	    
@@ -63,6 +66,7 @@ public class UsuarioDAO {
 	    return false; 
 	}
 	
+	//validação das credenciais inseridas no login
 	public boolean verificarLogin(Usuario usuario) {
 	    String query = "SELECT COUNT(*) FROM Usuario WHERE nome = ? AND senha = ?";
 	    
@@ -85,9 +89,10 @@ public class UsuarioDAO {
 	    return false; 
 	}
 	
+	//obtenção do ID para uso em outros(as) métodos/classes
 	public int obterIdUsuario(Usuario usuario) {
 	    String query = "SELECT id FROM Usuario WHERE nome = ? AND senha = ?";
-	    int idUsuario = -1; // valor padrão para indicar que nenhum usuário foi encontrado
+	    int idUsuario = -1;
 	    
 	    try (Connection con = conectar();
 	         PreparedStatement pst = con.prepareStatement(query)) {
@@ -107,6 +112,7 @@ public class UsuarioDAO {
 	    return idUsuario;
 	}
 	
+	//Obtenção das informações do usuário a partir de seu ID
 	public Usuario obterUsuarioPorId(int idUsuario) {
 	    String query = "SELECT * FROM Usuario WHERE id = ?";
 	    Usuario usuario = null;
@@ -125,7 +131,6 @@ public class UsuarioDAO {
 	                usuario.setSenha(rs.getString("senha"));
 	                usuario.setCuidador(rs.getString("cuidador"));
 	                usuario.setFotoPerfil(rs.getString("foto_url"));
-	                // Se houver mais campos a serem mapeados, você pode adicionar aqui
 	            }
 	        }
 	    } catch (Exception e) {
@@ -135,6 +140,7 @@ public class UsuarioDAO {
 	    return usuario;
 	}
 	
+	//Checagem da duplicidade de credenciais entre usuários
 	public boolean verificarDuplicidade(Usuario usuario) {
 	    String query = "SELECT COUNT(*) FROM Usuario WHERE (nome = ? OR email = ?) AND id != ?";
 	    
@@ -143,7 +149,7 @@ public class UsuarioDAO {
 
 	        pst.setString(1, usuario.getNome());
 	        pst.setString(2, usuario.getEmail());
-	        pst.setInt(3, usuario.getId()); // Exclui o ID do usuário atual da verificação
+	        pst.setInt(3, usuario.getId());
 
 	        try (ResultSet rs = pst.executeQuery()) {
 	            if (rs.next()) {
@@ -158,6 +164,7 @@ public class UsuarioDAO {
 	    return false; 
 	}
 	
+	//atualização das informações do usuário
 	public void atualizarPerfil(int idUsuario, Usuario usuario) {
 	    String query = "UPDATE Usuario SET nome = ?, email = ?, cuidador = ?, foto_url = ? WHERE id = ?";
 	    
@@ -176,7 +183,7 @@ public class UsuarioDAO {
 	    }
 	}
 
-	
+	//atualização da senha 
 	public void atualizarSenha(int idUsuario, String senhaNova) {
 	    String query = "UPDATE Usuario SET senha = ? WHERE id = ?";
 	    
@@ -192,6 +199,7 @@ public class UsuarioDAO {
 	    }
 	}
 
+	//verificação da senha
 	public boolean verificarSenha(int idUsuario, String senhaAntiga) {
 	    String query = "SELECT senha FROM Usuario WHERE id = ?";
 	    
@@ -210,7 +218,7 @@ public class UsuarioDAO {
 	        System.out.println("Erro ao verificar senha do usuário: " + e);
 	    }
 	    
-	    return false; // Em caso de erro ou usuário não encontrado, retorna falso
+	    return false;
 	}
 
 

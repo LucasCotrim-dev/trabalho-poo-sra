@@ -1,3 +1,4 @@
+//Objeto usuário para uso em demais classes, apenas contém atributos, construtores, getters e setters
 package model;
 
 public class Usuario {

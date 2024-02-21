@@ -1,3 +1,4 @@
+//Objeto evento para uso em demais classes, apenas contém atributos, construtores, getters e setters
 package model;
 
 public class Evento extends Tarefa {

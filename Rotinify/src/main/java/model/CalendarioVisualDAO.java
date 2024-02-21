@@ -1,3 +1,4 @@
+//Classe para lidar com a interação entre objetos existentes no calendário visual e o banco de dados
 package model;
 
 import java.sql.Connection;
@@ -12,6 +13,7 @@ public class CalendarioVisualDAO extends TarefaVisualDAO{
 	private String user = "root";
 	private String password = "";
 	
+	//iniciar o banco de dados
 	public Connection conectar() {
 		Connection con = null;
 		try {
@@ -23,6 +25,7 @@ public class CalendarioVisualDAO extends TarefaVisualDAO{
 			return null;
 		}
 	}
+	//atualizar informações da tarefa no banco de dados
 	@Override
 	public void alterarTarefa(TarefaVisual tarefa) {
         String update = "UPDATE tarefa SET imagem=?, horario=? WHERE id=?";
@@ -39,6 +42,7 @@ public class CalendarioVisualDAO extends TarefaVisualDAO{
         }
     }
 	
+	//listar tarefas existentes no banco de dados a depender do ID do usuário
 	public ArrayList<TarefaVisual> listarTarefas(String diaSemana, int idUsuario) {
 	    ArrayList<TarefaVisual> tarefas = new ArrayList<>();
 	    String read = "SELECT id, imagem, horario FROM tarefa WHERE dia_semana = ? AND usuario_id = ? ORDER BY horario";
@@ -62,7 +66,7 @@ public class CalendarioVisualDAO extends TarefaVisualDAO{
 	    }
 	}
 
-	
+	//remover a tarefa do banco de dados
 	public void removerTarefa(TarefaVisual tarefa) {
         String delete = "DELETE FROM tarefa WHERE id=?";
         try {

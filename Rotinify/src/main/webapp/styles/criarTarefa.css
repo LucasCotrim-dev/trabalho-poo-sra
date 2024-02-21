@@ -22,12 +22,12 @@ h1 {
 
 form {
     display: grid;
-    grid-gap: 15px; /* Reduzindo o espaço entre os elementos do formulário */
+    grid-gap: 15px;
 }
 
 label {
     font-weight: bold;
-    margin-bottom: 5px; /* Adicionando uma pequena margem inferior para separar os rótulos dos campos */
+    margin-bottom: 5px;
 }
 
 input[type="text"],
@@ -35,7 +35,7 @@ input[type="time"],
 input[type="date"],
 select#dia_semana,
 textarea {
-    width: calc(100% - 20px); /* Ajustando a largura dos campos para ocupar quase toda a largura do contêiner */
+    width: calc(100% - 20px);
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -57,7 +57,7 @@ button:hover {
 }
 
 button[type="submit"] {
-    width: 100%; /* Fazendo o botão de envio ocupar toda a largura disponível */
+    width: 100%;
 }
 
 button[type="submit"]:hover {
@@ -66,7 +66,7 @@ button[type="submit"]:hover {
 
 input[type="date"],
 select#dia_semana {
-    width: calc(50% - 10px); /* Define a largura dos inputs para ocupar metade da largura do container */
+    width: calc(50% - 10px);
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -75,18 +75,17 @@ select#dia_semana {
     margin-top: 5px;
 }
 
-/* Ajuste de margem para os inputs */
 input[type="date"] {
-    margin-right: 10px; /* Adiciona uma margem à direita para separar os inputs */
+    margin-right: 10px;
 }
 
 select#dia_semana {
-    margin-left: 10px; /* Adiciona uma margem à esquerda para separar os inputs */
+    margin-left: 10px;
 }
 
 textarea {
     resize: vertical;
-    min-height: 80px; /* Reduzindo um pouco a altura mínima do textarea */
+    min-height: 80px;
 }
 
 

@@ -1,3 +1,5 @@
+//Classe para fazer o crud das tarefas no banco de dados, além de um método para listá-las
+
 package model;
 
 import java.sql.Connection;
@@ -24,7 +26,7 @@ public class TarefaDAO {
 		}
 	}
 	
-	
+	//Com exceção do listarTarefas, todos os métodos abaixo são relacionados ao CRUD
 	public void adicionarTarefa(Tarefa tarefa, int idUsuario) {
 	    String create = "INSERT INTO Tarefa (nome, descricao, horario, dia_semana, usuario_id) values (?,?,?,?,?)";
 	    
@@ -36,7 +38,7 @@ public class TarefaDAO {
 	        pst.setString(2, tarefa.getDescricao());
 	        pst.setString(3, tarefa.getHorario());
 	        pst.setString(4, tarefa.getDia_semana());
-	        pst.setInt(5, idUsuario); // Associar a tarefa ao usuário pelo ID
+	        pst.setInt(5, idUsuario);
 	        
 	        pst.executeUpdate();
 	        con.close();

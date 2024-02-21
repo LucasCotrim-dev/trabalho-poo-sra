@@ -1,3 +1,4 @@
+<!--Visualização da lista de tarefas não ilustradas-->
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ page import="model.Tarefa"%>

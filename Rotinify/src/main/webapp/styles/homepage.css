@@ -14,9 +14,9 @@ body {
     min-height: 100%;
     line-height: 1;
     background-image: url('../images/padrao-de-fundo4.png');
-    background-size: auto; /* Ou o tamanho desejado da imagem */
+    background-size: auto;
     background-size: 20%;
-    background-repeat: repeat; /* Permite a repetição da imagem */
+    background-repeat: repeat;
     background-attachment: fixed;
 }
 
@@ -192,13 +192,13 @@ section {
 }
 
 #welcome-image {
-    width: 300px; /* Defina a largura desejada para a div que envolve a imagem */
-    height: auto; /* Mantenha a altura automática para manter a proporção da imagem */
+    width: 300px;
+    height: auto;
 }
 
 #welcome-image img {
-    width: 100%; /* A imagem ocupará toda a largura da div */
-    height: auto; /* Mantenha a altura automática para manter a proporção da imagem */
+    width: 100%;
+    height: auto;
 }
 
 
@@ -256,17 +256,17 @@ section {
 }
 
 .about-text h1 {
-    margin-bottom: 50px; /* Adiciona margem inferior ao título */
+    margin-bottom: 50px;
     font-size:40px;
 }
 
 .about-text p {
-    font-size:25px; /* Adiciona margem inferior ao título */
+    font-size:25px;
 }
 
 
 .about-image {
-    width: 35%; /* Diminuindo a largura da imagem */
+    width: 35%;
 }
 
 .about-image img {
@@ -274,7 +274,6 @@ section {
     height: auto; 
 }
 
-/* Adicione estilos específicos para dispositivos menores, se necessário */
 @media only screen and (max-width: 768px) {
     .about-content {
         grid-template-columns: 1fr;
@@ -282,7 +281,7 @@ section {
         text-align: center;
     }
     .about-image {
-        order: -1; /* Inverte a ordem da imagem para que ela apareça acima do texto em dispositivos menores */
+        order: -1;
     }
 }
 

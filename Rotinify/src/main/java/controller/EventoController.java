@@ -1,3 +1,5 @@
+//Classe que lida com lógica do evento
+
 package controller;
 
 import java.io.IOException;
@@ -23,6 +25,7 @@ public class EventoController extends HttpServlet {
         super();
     }
 
+    //Método que redireciona a página para realizar a ação selecionada (Listar eventos, CRUD)
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getServletPath();
         if(action.equals("/manageEvent")) {
@@ -38,6 +41,7 @@ public class EventoController extends HttpServlet {
         }
     }
 
+    //Método que mostra os eventos no calendário básico
     protected void eventos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idUsuario = (int) request.getSession().getAttribute("idUsuario"); 
         ArrayList<Evento> listaEventos = eventoDao.listarEventos(idUsuario);
@@ -46,6 +50,7 @@ public class EventoController extends HttpServlet {
         rd.forward(request, response);
     }
 
+    //Os demais métodos abaixo realizam o CRUD
     protected void adicionarEvento(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {      
         int idUsuario = (int) request.getSession().getAttribute("idUsuario");
         System.out.println("ID do usuário obtido da sessão: " + idUsuario);

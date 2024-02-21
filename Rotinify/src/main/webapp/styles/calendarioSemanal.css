@@ -122,9 +122,8 @@ th {
     transition: opacity   0.3s ease;
 }
 
-/* Estilos para a lista de tarefas */
 .coluna ul {
-    list-style-type: none; /* Remove os pontos da lista */
+    list-style-type: none;
     padding:  0;
     margin:  0;
 }

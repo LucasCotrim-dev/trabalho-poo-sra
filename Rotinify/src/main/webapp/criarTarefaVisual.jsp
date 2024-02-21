@@ -1,3 +1,4 @@
+<!--Visualização da criação de tarefa visual-->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -24,26 +25,20 @@
         }
     });
 
-    // Function to open the image popup modal
     function openImagePopup() {
-    // Obtenha a div do modal
     var modal = document.getElementById("myModal");
 
-    // Exiba o modal
     modal.style.display = "flex";
 
-    // Adicione event listeners para os botões de imagem
     var imageButtons = document.getElementsByClassName("image-button");
     for (var i =  0; i < imageButtons.length; i++) {
         imageButtons[i].addEventListener("click", function() {
-            // Atualize a imagem selecionada
             var selectedImage = document.getElementById("selectedImage");
             var clickedImageSrc = this.firstChild.src;
             selectedImage.src = clickedImageSrc;
             selectedImage.style.display = "block";
             document.getElementById("imagem").value = clickedImageSrc;
 
-            // Feche o modal
             modal.style.display = "none";
         });
     }
@@ -58,11 +53,9 @@
     <div class="container">
         <h1>Criar Tarefa</h1>
 
-        <!-- Add this line before the form -->
         <img id="selectedImage" src="<%= request.getAttribute("imagem") %>" alt="Imagem Selecionada" style="display: <%= request.getAttribute("imagem") != null ? "block" : "none" %>">
 
         <form action="insertVisual">
-            <!-- Hidden input field to store the image path -->
             <input type="hidden" id="imagem" name="imagem" value="<%= request.getAttribute("imagem") %>" required>
             <button type="button" onclick="openImagePopup()">Selecionar Imagem</button>
 

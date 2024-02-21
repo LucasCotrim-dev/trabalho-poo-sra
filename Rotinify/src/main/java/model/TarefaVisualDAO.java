@@ -1,3 +1,4 @@
+//Classe para fazer o crud das tarefas visuais no banco de dados, além de um método para listá-las
 package model;
 
 import java.sql.Connection;
@@ -24,6 +25,7 @@ public class TarefaVisualDAO {
 		}
 	}
 	
+	//Com exceção do listarTarefas, todos os métodos abaixo são relacionados ao CRUD
 	public void adicionarTarefa(TarefaVisual tarefaVisual, int idUsuario) {
 	    String create = "INSERT INTO Tarefa (imagem, horario, dia_semana, usuario_id) values (?,?,?,?)";
 	    

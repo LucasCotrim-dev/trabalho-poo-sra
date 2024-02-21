@@ -1,3 +1,4 @@
+//Classe para lidar com a interação entre objetos existentes no calendário básico e o banco de dados
 package model;
 
 import java.sql.Connection;
@@ -12,6 +13,7 @@ public class CalendarioDAO extends TarefaDAO{
 	private String user = "root";
 	private String password = "";
 	
+	//iniciar o banco de dados
 	public Connection conectar() {
 		Connection con = null;
 		try {
@@ -23,6 +25,7 @@ public class CalendarioDAO extends TarefaDAO{
 			return null;
 		}
 	}
+	//atualizar informações da tarefa no banco de dados
 	@Override
 	public void alterarTarefa(Tarefa tarefa) {
         String update = "UPDATE tarefa SET nome=?, descricao=?, horario=? WHERE id=?";
@@ -40,6 +43,7 @@ public class CalendarioDAO extends TarefaDAO{
         }
     }
 	
+	//listar tarefas existentes no banco de dados a depender do ID do usuário
 	public ArrayList<Tarefa> listarTarefas(String diaSemana, int idUsuario) {
 	    ArrayList<Tarefa> tarefas = new ArrayList<>();
 	    String read = "SELECT id, nome, descricao, horario FROM tarefa WHERE dia_semana = ? AND usuario_id = ? ORDER BY horario";
@@ -64,7 +68,7 @@ public class CalendarioDAO extends TarefaDAO{
 	    }
 	}
 
-	
+	//remover a tarefa do banco de dados
 	public void removerTarefa(Tarefa tarefa) {
         String delete = "DELETE FROM tarefa WHERE id=?";
         try {

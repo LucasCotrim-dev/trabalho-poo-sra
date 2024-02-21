@@ -1,3 +1,4 @@
+<!--Visualização do menu-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,7 +17,6 @@
     <nav class="navbar">
         <div class="logo-container">
             <div class="logo">
-                <!-- Aqui você pode adicionar sua logo -->
                 <img src="images/Logo.svg" alt="Logo da Rotinify">
             </div>
         </div>

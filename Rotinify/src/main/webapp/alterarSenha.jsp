@@ -1,3 +1,4 @@
+<!-- Estruturação da parte visual da troca de senha-->
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>

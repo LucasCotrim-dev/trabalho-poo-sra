@@ -1,3 +1,4 @@
+<!--Visualização e javascript do cadastro-->
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -24,7 +25,6 @@
             document.getElementById('username').value = username || '';
             document.getElementById('email').value = email || '';
 
-            // Exibir a mensagem de erro se necessário
             const erroCadastro = document.getElementById('erroCadastro');
             erroCadastro.innerText = errorMessage[errorCode] || 'Ocorreu um erro durante o cadastro.';
             erroCadastro.style.display = 'block';

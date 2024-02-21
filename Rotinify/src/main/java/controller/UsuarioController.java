@@ -1,3 +1,4 @@
+//Classe que lida com a lógica do usuário
 package controller;
 
 import java.io.IOException;
@@ -22,6 +23,8 @@ public class UsuarioController extends HttpServlet {
 
 	}
 
+	//Método que redireciona a página para realizar a ação selecionada (cadastro, login,
+	//atualização de perfil, ir para a página inicial)
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getServletPath();
@@ -38,7 +41,8 @@ public class UsuarioController extends HttpServlet {
 		}
 
 	}
-
+	
+	//Salva o usuário no banco de dados
 	protected void cadastro(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		usuario.setCuidador(request.getParameter("cuidador"));
@@ -56,6 +60,7 @@ public class UsuarioController extends HttpServlet {
 		}
 	}
 
+	//Verificação das credenciais do usuário, e caso válidas, redirecionamento ao menu
 	protected void login(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		usuario.setNome(request.getParameter("username"));
@@ -76,6 +81,7 @@ public class UsuarioController extends HttpServlet {
 		}
 	}
 
+	//Mudança dos dados do usuário no BD
 	protected void atualizarPerfil(HttpServletRequest request, HttpServletResponse response)
 	        throws ServletException, IOException {
 	    int idUsuario = (int) request.getSession().getAttribute("idUsuario");
@@ -100,9 +106,7 @@ public class UsuarioController extends HttpServlet {
 	    response.sendRedirect("menu.jsp");
 	}
 
-
-
-
+	//Validação da mudança de senha
 	protected void alterarSenha(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		int idUsuario = (int) request.getSession().getAttribute("idUsuario");
 	    String senhaAntiga = request.getParameter("senhaAntiga");

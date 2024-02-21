@@ -51,7 +51,6 @@ body {
 }
 
 .edit-photo-button-wrapper button {
-    /* Estilos para o botão "Editar Foto" */
     background-color: #007bff;
     color: white;
     border: none;
@@ -93,7 +92,7 @@ body {
     object-fit: cover;
     transition: filter 0.3s ease-in-out;
     background-color: white;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* offsetX offsetY blurRadius spreadRadius color */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 
 }
 
@@ -106,23 +105,22 @@ body {
 }
 
 .profile-image-circle.empty {
-    background-image: url('images/fotosPerfil/perfilVazio.png'); /* Imagem de fundo padrão */
+    background-image: url('images/fotosPerfil/perfilVazio.png');
     background-size: cover; 
 }
 
 .modal-content .image-button {
-    width:   150px; /* Define a largura do botão */
-    height:   150px; /* Define a altura do botão */
-    display: flex; /* Centraliza a imagem dentro do botão */
-    justify-content: center; /* Centraliza a imagem horizontalmente */
-    align-items: center; /* Centraliza a imagem verticalmente */
+    width:   150px;
+    height:   150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Estilo para as imagens dentro dos botões do modal */
 .modal-content .image-button img {
-    width:   100%; /* A imagem ocupará todo o espaço do botão */
-    height: auto; /* A altura será ajustada automaticamente para manter a proporção */
-    object-fit: contain; /* A imagem será redimensionada para caber dentro do botão sem cortar */
+    width:   100%;
+    height: auto;
+    object-fit: contain;
 }
 
 .edit-text {

@@ -8,7 +8,7 @@
     <title>Criar Tarefa</title>
 </head>
 
-<body>
+<body style="background-image: url(images/background-tarefas2.jpg); background-size: cover;">
 
     <div class="container">
         <h1>Criar Tarefa</h1>

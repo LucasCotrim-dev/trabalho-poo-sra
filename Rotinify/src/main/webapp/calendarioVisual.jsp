@@ -40,7 +40,7 @@
                             if (tarefa.getDia_semana().equals("Segunda-feira") && tarefa.getCaminho_imagem() != null && !tarefa.getCaminho_imagem().isEmpty()) { %>
                     <li>
                         <div class="tarefa">
-                            <img alt="" src="<%= tarefa.getCaminho_imagem() %>">
+                            <img alt="" src="<%= tarefa.getCaminho_imagem() %>" class="imagem-centralizada">
                             <div class="descricao-horario">
                                 <div class="horario-icon-container">
                                     <img src="images/hora.jpg" alt="Descrição da imagem" class="imagem-horario">

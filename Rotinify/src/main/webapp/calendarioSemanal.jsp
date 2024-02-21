@@ -68,218 +68,214 @@
 					%>
 				</ul> <a href="manage?dia_semana=Segunda-feira" class="gerenciar-button">Gerenciar</a>
 			</td>
-
 			<td class="coluna">
-    <ul>
-        <% 
-        if (listaTarefas != null) {
-            for (int i = 0; i < listaTarefas.size(); i++) {
-                if (listaTarefas.get(i).getDia_semana().equals("Segunda-feira")) {
-                    String nomeTarefa = listaTarefas.get(i).getNome();
-                    if (nomeTarefa != null && !nomeTarefa.isEmpty()) {
-        %>
-        <li>
-            <div class="tarefa">
-                <span class="nome-tarefa"><%=nomeTarefa%></span>
-                <div class="descricao-horario">
-                    <span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
-                    <div class="horario-icon-container">
-                        <img src="images/hora.jpg" alt="Descrição da imagem" class="imagem-horario">
-                        <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%></span>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <%
-                    }
-                }
-            }
-        }
-        %>
-    </ul>
-    <a href="manage?dia_semana=Segunda-feira" class="gerenciar-button">Gerenciar</a>
-</td>
-<td class="coluna">
-    <ul>
-        <% 
-        if (listaTarefas != null) {
-            for (int i = 0; i < listaTarefas.size(); i++) {
-                if (listaTarefas.get(i).getDia_semana().equals("Terça-feira")) {
-                    String nomeTarefa = listaTarefas.get(i).getNome();
-                    if (nomeTarefa != null && !nomeTarefa.isEmpty()) {
-        %>
-        <li>
-            <div class="tarefa">
-                <span class="nome-tarefa"><%=nomeTarefa%></span>
-                <div class="descricao-horario">
-                    <span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
-                    <div class="horario-icon-container">
-                        <img src="images/hora.jpg" alt="Descrição da imagem" class="imagem-horario">
-                        <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%></span>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <%
-                    }
-                }
-            }
-        }
-        %>
-    </ul>
-    <a href="manage?dia_semana=Terça-feira" class="gerenciar-button">Gerenciar</a>
-</td>
-<td class="coluna">
-    <ul>
-        <% 
-        if (listaTarefas != null) {
-            for (int i = 0; i < listaTarefas.size(); i++) {
-                if (listaTarefas.get(i).getDia_semana().equals("Quarta-feira")) {
-                    String nomeTarefa = listaTarefas.get(i).getNome();
-                    if (nomeTarefa != null && !nomeTarefa.isEmpty()) {
-        %>
-        <li>
-            <div class="tarefa">
-                <span class="nome-tarefa"><%=nomeTarefa%></span>
-                <div class="descricao-horario">
-                    <span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
-                    <div class="horario-icon-container">
-                        <img src="images/hora.jpg" alt="Descrição da imagem" class="imagem-horario">
-                        <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%></span>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <%
-                    }
-                }
-            }
-        }
-        %>
-    </ul>
-    <a href="manage?dia_semana=Quarta-feira" class="gerenciar-button">Gerenciar</a>
-</td>
-<td class="coluna">
-    <ul>
-        <% 
-        if (listaTarefas != null) {
-            for (int i = 0; i < listaTarefas.size(); i++) {
-                if (listaTarefas.get(i).getDia_semana().equals("Quinta-feira")) {
-                    String nomeTarefa = listaTarefas.get(i).getNome();
-                    if (nomeTarefa != null && !nomeTarefa.isEmpty()) {
-        %>
-        <li>
-            <div class="tarefa">
-                <span class="nome-tarefa"><%=nomeTarefa%></span>
-                <div class="descricao-horario">
-                    <span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
-                    <div class="horario-icon-container">
-                        <img src="images/hora.jpg" alt="Descrição da imagem" class="imagem-horario">
-                        <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%></span>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <%
-                    }
-                }
-            }
-        }
-        %>
-    </ul>
-    <a href="manage?dia_semana=Quinta-feira" class="gerenciar-button">Gerenciar</a>
-</td>
-<td class="coluna">
-    <ul>
-        <% 
-        if (listaTarefas != null) {
-            for (int i = 0; i < listaTarefas.size(); i++) {
-                if (listaTarefas.get(i).getDia_semana().equals("Sexta-feira")) {
-                    String nomeTarefa = listaTarefas.get(i).getNome();
-                    if (nomeTarefa != null && !nomeTarefa.isEmpty()) {
-        %>
-        <li>
-            <div class="tarefa">
-                <span class="nome-tarefa"><%=nomeTarefa%></span>
-                <div class="descricao-horario">
-                    <span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
-                    <div class="horario-icon-container">
-                        <img src="images/hora.jpg" alt="Descrição da imagem" class="imagem-horario">
-                        <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%></span>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <%
-                    }
-                }
-            }
-        }
-        %>
-    </ul>
-    <a href="manage?dia_semana=Sexta-feira" class="gerenciar-button">Gerenciar</a>
-</td>
-<td class="coluna">
-    <ul>
-        <% 
-        if (listaTarefas != null) {
-            for (int i = 0; i < listaTarefas.size(); i++) {
-                if (listaTarefas.get(i).getDia_semana().equals("Sábado")) {
-                    String nomeTarefa = listaTarefas.get(i).getNome();
-                    if (nomeTarefa != null && !nomeTarefa.isEmpty()) {
-        %>
-        <li>
-            <div class="tarefa">
-                <span class="nome-tarefa"><%=nomeTarefa%></span>
-                <div class="descricao-horario">
-                    <span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
-                    <div class="horario-icon-container">
-                        <img src="images/hora.jpg" alt="Descrição da imagem" class="imagem-horario">
-                        <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%></span>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <%
-                    }
-                }
-            }
-        }
-        %>
-    </ul>
-    <a href="manage?dia_semana=Sábado" class="gerenciar-button">Gerenciar</a>
-</td>
-<td class="coluna">
-    <ul>
-        <% 
-        if (listaTarefas != null) {
-            for (int i = 0; i < listaTarefas.size(); i++) {
-                if (listaTarefas.get(i).getDia_semana().equals("Domingo")) {
-                    String nomeTarefa = listaTarefas.get(i).getNome();
-                    if (nomeTarefa != null && !nomeTarefa.isEmpty()) {
-        %>
-        <li>
-            <div class="tarefa">
-                <span class="nome-tarefa"><%=nomeTarefa%></span>
-                <div class="descricao-horario">
-                    <span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
-                    <div class="horario-icon-container">
-                        <img src="images/hora.jpg" alt="Descrição da imagem" class="imagem-horario">
-                        <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%></span>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <%
-                    }
-                }
-            }
-        }
-        %>
-    </ul>
-    <a href="manage?dia_semana=Domingo" class="gerenciar-button">Gerenciar</a>
-</td>
-
+				<ul>
+					<%
+					if (listaTarefas != null) {
+						for (int i = 0; i < listaTarefas.size(); i++) {
+							if (listaTarefas.get(i).getDia_semana().equals("Terça-feira")) {
+						String nomeTarefa = listaTarefas.get(i).getNome();
+						if (nomeTarefa != null && !nomeTarefa.isEmpty()) {
+					%>
+					<li>
+						<div class="tarefa">
+							<span class="nome-tarefa"><%=nomeTarefa%></span>
+							<div class="descricao-horario">
+								<span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
+								<div class="horario-icon-container">
+									<img src="images/hora.jpg" alt="Descrição da imagem"
+										class="imagem-horario"> <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%></span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<%
+					}
+					}
+					}
+					}
+					%>
+				</ul> <a href="manage?dia_semana=Terça-feira" class="gerenciar-button">Gerenciar</a>
+			</td>
+			<td class="coluna">
+				<ul>
+					<%
+					if (listaTarefas != null) {
+						for (int i = 0; i < listaTarefas.size(); i++) {
+							if (listaTarefas.get(i).getDia_semana().equals("Quarta-feira")) {
+						String nomeTarefa = listaTarefas.get(i).getNome();
+						if (nomeTarefa != null && !nomeTarefa.isEmpty()) {
+					%>
+					<li>
+						<div class="tarefa">
+							<span class="nome-tarefa"><%=nomeTarefa%></span>
+							<div class="descricao-horario">
+								<span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
+								<div class="horario-icon-container">
+									<img src="images/hora.jpg" alt="Descrição da imagem"
+										class="imagem-horario"> <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%></span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<%
+					}
+					}
+					}
+					}
+					%>
+				</ul> <a href="manage?dia_semana=Quarta-feira" class="gerenciar-button">Gerenciar</a>
+			</td>
+			<td class="coluna">
+				<ul>
+					<%
+					if (listaTarefas != null) {
+						for (int i = 0; i < listaTarefas.size(); i++) {
+							if (listaTarefas.get(i).getDia_semana().equals("Quinta-feira")) {
+						String nomeTarefa = listaTarefas.get(i).getNome();
+						if (nomeTarefa != null && !nomeTarefa.isEmpty()) {
+					%>
+					<li>
+						<div class="tarefa">
+							<span class="nome-tarefa"><%=nomeTarefa%></span>
+							<div class="descricao-horario">
+								<span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
+								<div class="horario-icon-container">
+									<img src="images/hora.jpg" alt="Descrição da imagem"
+										class="imagem-horario"> <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%></span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<%
+					}
+					}
+					}
+					}
+					%>
+				</ul> <a href="manage?dia_semana=Quinta-feira" class="gerenciar-button">Gerenciar</a>
+			</td>
+			<td class="coluna">
+				<ul>
+					<%
+					if (listaTarefas != null) {
+						for (int i = 0; i < listaTarefas.size(); i++) {
+							if (listaTarefas.get(i).getDia_semana().equals("Sexta-feira")) {
+						String nomeTarefa = listaTarefas.get(i).getNome();
+						if (nomeTarefa != null && !nomeTarefa.isEmpty()) {
+					%>
+					<li>
+						<div class="tarefa">
+							<span class="nome-tarefa"><%=nomeTarefa%></span>
+							<div class="descricao-horario">
+								<span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
+								<div class="horario-icon-container">
+									<img src="images/hora.jpg" alt="Descrição da imagem"
+										class="imagem-horario"> <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%></span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<%
+					}
+					}
+					}
+					}
+					%>
+				</ul> <a href="manage?dia_semana=Sexta-feira" class="gerenciar-button">Gerenciar</a>
+			</td>
+			<td class="coluna">
+				<ul>
+					<%
+					if (listaTarefas != null) {
+						for (int i = 0; i < listaTarefas.size(); i++) {
+							if (listaTarefas.get(i).getDia_semana().equals("Sábado")) {
+						String nomeTarefa = listaTarefas.get(i).getNome();
+						if (nomeTarefa != null && !nomeTarefa.isEmpty()) {
+					%>
+					<li>
+						<div class="tarefa">
+							<span class="nome-tarefa"><%=nomeTarefa%></span>
+							<div class="descricao-horario">
+								<span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
+								<div class="horario-icon-container">
+									<img src="images/hora.jpg" alt="Descrição da imagem"
+										class="imagem-horario"> <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%></span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<%
+					}
+					}
+					}
+					}
+					%>
+				</ul> <a href="manage?dia_semana=Sábado" class="gerenciar-button">Gerenciar</a>
+			</td>
+			<td class="coluna">
+				<ul>
+					<%
+					if (listaTarefas != null) {
+						for (int i = 0; i < listaTarefas.size(); i++) {
+							if (listaTarefas.get(i).getDia_semana().equals("Domingo")) {
+						String nomeTarefa = listaTarefas.get(i).getNome();
+						if (nomeTarefa != null && !nomeTarefa.isEmpty()) {
+					%>
+					<li>
+						<div class="tarefa">
+							<span class="nome-tarefa"><%=nomeTarefa%></span>
+							<div class="descricao-horario">
+								<span class="descricao-tarefa"><%=listaTarefas.get(i).getDescricao()%></span>
+								<div class="horario-icon-container">
+									<img src="images/hora.jpg" alt="Descrição da imagem"
+										class="imagem-horario"> <span class="horario-tarefa"><%=listaTarefas.get(i).getHorario()%></span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<%
+					}
+					}
+					}
+					}
+					%>
+				</ul> <a href="manage?dia_semana=Domingo" class="gerenciar-button">Gerenciar</a>
+			</td>
+						<td class="coluna">
+				<ul>
+					<!-- Lista de eventos -->
+					<%
+					ArrayList<Evento> listaEventos = (ArrayList<Evento>) request.getAttribute("eventos");
+					%>
+					<%
+					if (listaEventos != null) {
+					%>
+					<%
+					for (int i = 0; i < listaEventos.size(); i++) {
+					%>
+					<li>
+						<div class="tarefa">
+							<span class="nome-tarefa"><%=listaEventos.get(i).getNome()%></span>
+							<div class="descricao-horario">
+								<span class="descricao-tarefa"><%=listaEventos.get(i).getDescricao()%></span>
+								<div class="horario-icon-container">
+									<img src="images/hora.jpg" alt="Descrição da imagem"
+										class="imagem-horario"> <span class="horario-tarefa"><%=listaEventos.get(i).getHorario()%>
+									</span>
+								</div>
+								<span class="horario-tarefa"><%=listaEventos.get(i).getData()%></span>
+							</div>
+						</div>
+					</li>
+					<%
+					}
+					%>
+					<%
+					}
+					%>
+				</ul> <a href="manageEvent" class="gerenciar-button">Gerenciar</a>
+			</td>
 		</tr>
 	</table>
 </body>

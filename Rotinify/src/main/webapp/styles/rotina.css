@@ -1,6 +1,7 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: monospace, sans-serif;
+    background-image: url('../images/background-tarefa.jpg');
+    background-size: 100%;
     margin: 0;
     padding: 0;
 }
@@ -10,60 +11,83 @@ h1 {
     color: #333;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-a {
-    display: block;
+.button-wrapper {
     text-align: center;
-    margin-bottom: 70px;
     margin-top: 40px;
-    color: #007bff;
-    text-decoration: none;
+    margin-bottom: 70px;
 }
 
-.tarefa {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	margin: 20px auto 200px;    
-	max-width: 600px; 
-    position: relative;
-    margin-bottom: 60px; 
-}
-
-.tarefa h2 {
-    margin-top: 0;
-    color: #333;
+.back-button {
     position: absolute;
     top: 10px;
     left: 10px;
-    right: auto;
-    background: #f0f0f0;
-    border-radius: 20px;
-    padding: 5px 40px ;
+    color: #000;
+    text-decoration: none;
+    border: 2px solid #000; /* Alterado para borda preta */
+    padding: 5px 10px; /* Adiciona um preenchimento interno para melhorar a aparência */
+    border-radius: 5px; /* Adiciona bordas arredondadas */
 }
 
+
+
+.tarefa {
+    background-color: #fff; /* Altera a cor de fundo do retângulo para branco */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto 50px;
+    max-width: 600px;
+    position: relative;
+}
+
+.tarefa h2 {
+    margin-top: -20px; 
+    background-color: #f0f0f0; 
+    padding: 10px 30px;
+    text-align: center;
+    margin-left: -20px; 
+    margin-right: -20px;
+    border-top-left-radius: 10px; 
+    border-top-right-radius: 10px;
+}
+
+
 .tarefa p {
-    margin-top: 40px; /* Adicionado espaço entre o título e a descrição */
+    margin-top: 20px;
 }
 
 .horario {
-    font-size: 30px; /* Aumenta o tamanho do horário */
-    color: #000; /* Define a cor preta */
+    font-size: 20px;
+    color: #000;
     position: absolute;
-    top: -40px; /* Ajuste para abaixar um pouco mais */
-    left: -80px;/* Ajuste para ficar fora do retângulo e ao lado */
+    top: 15px; /* Ajusta a posição para ficar dentro do retângulo */
+    right: 15px; /* Ajusta a posição para fora do retângulo */
 }
 
-.pergunta {
-    font-weight: bold;
-    color: #007bff;
+.excluir {
+    color: #fff;
     cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #dc3545;
+    border-radius: 10px;
+    padding: 5px 20px;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.editar {
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 120px;
+    background: #007bff;
+    border-radius: 10px;
+    padding: 5px 20px;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .no-tasks {
@@ -71,27 +95,6 @@ a {
     justify-content: center;
     align-items: center;
     margin-top: 50px;
-}
-
-.excluir {
-    color: #fff;
-    cursor: pointer;
-    position: absolute;
-    bottom: -50px;
-    right: 140px;
-    background: #dc3545;
-    border-radius: 10px;
-    padding: 5px 40px;
-}
-.editar {
-    color: #fff;
-    cursor: pointer;
-    position: absolute;
-    bottom: -50px;
-    right: 10px;
-    background: #007bff;
-    border-radius: 10px;
-    padding: 5px 40px;
 }
 
 

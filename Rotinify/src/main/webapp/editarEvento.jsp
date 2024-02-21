@@ -8,10 +8,10 @@
     <link rel="stylesheet" type="text/css" href="styles/criarTarefa.css">
 </head>
 
-<body>
+<body style="background-image: url(images/background-tarefas2.jpg); background-size: cover;">
 
     <div class="container">
-        <h1>Editar Tarefa</h1>
+        <h1>Editar Evento</h1>
 
         <form action="updateEvent">
             <label for="nome">Nome:</label>

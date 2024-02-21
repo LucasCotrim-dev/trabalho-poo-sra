@@ -64,7 +64,6 @@ public class UsuarioController extends HttpServlet {
 		if (usuarioDao.verificarLogin(usuario)) {
 			int idUsuario = usuarioDao.obterIdUsuario(usuario);
 
-			// Define o ID do usuário na sessão
 			request.getSession().setAttribute("idUsuario", idUsuario);
 			request.setAttribute("usuario", usuario);
 
@@ -81,29 +80,23 @@ public class UsuarioController extends HttpServlet {
 	        throws ServletException, IOException {
 	    int idUsuario = (int) request.getSession().getAttribute("idUsuario");
 
-	    // Obtenha os valores dos campos do request
 	    String nome = request.getParameter("nome");
 	    String email = request.getParameter("email");
 	    String senha = request.getParameter("senha");
-	    String cuidador = request.getParameter("cuidador"); // Certifique-se de que este campo esteja presente no formulário
+	    String cuidador = request.getParameter("cuidador"); 
 	    String caminhoImagem = request.getParameter("foto_url");
 
-	    // Atualize o objeto usuário com os novos valores
 	    Usuario usuarioAtualizado = new Usuario(idUsuario, nome, email, senha, cuidador, caminhoImagem);
 
-	    // Verifique se há duplicidade
 	    if (usuarioDao.verificarDuplicidade(usuarioAtualizado)) {
 	        response.sendRedirect("editarPerfil.jsp?error=true");
 	        return;
 	    }
 
-	    // Atualize o perfil no banco de dados
 	    usuarioDao.atualizarPerfil(idUsuario, usuarioAtualizado);
 
-	    // Atualize o objeto usuário na sessão com as novas informações
 	    request.getSession().setAttribute("usuario", usuarioAtualizado);
 
-	    // Redirecione para a página JSP que exibe o perfil do usuário
 	    response.sendRedirect("menu.jsp");
 	}
 
@@ -117,9 +110,7 @@ public class UsuarioController extends HttpServlet {
 	    String confirmacaoSenha = request.getParameter("confirmacaoSenha");
 
 	    if (usuarioDao.verificarSenha(idUsuario, senhaAntiga)) {
-	        // Verificar se a nova senha e a confirmação coincidem
 	        if (senhaNova.equals(confirmacaoSenha)) {
-	            // Atualizar a senha no banco de dados
 	            usuarioDao.atualizarSenha(idUsuario, senhaNova);
 	            response.sendRedirect("editarPerfil.jsp?senhaAlterada=true");
 	            return;

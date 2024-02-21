@@ -14,8 +14,11 @@
 
 <body>
     <nav class="navbar">
-        <div class="logo">
-            <a href="#">ROTINIFY</a>
+        <div class="logo-container">
+            <div class="logo">
+                <!-- Aqui você pode adicionar sua logo -->
+                <img src="images/Logo.svg" alt="Logo da Rotinify">
+            </div>
         </div>
         <div class="social-links">
             <a href="facebook.com" class="social-link">Facebook</a>
@@ -29,11 +32,9 @@
             <a href="mainVisual" class="menu-option" data-text="Recomendado para Crianças">Calendário Visual</a>
             <a href="editarPerfil.jsp" class="menu-option" data-text="Personalização e Design">Edição de Perfil</a>
         </div>
+        
     </div>
-    <%
-        // Aqui você pode inserir lógica Java para processar os dados necessários
-        // Por exemplo, para obter os textos explicativos dinamicamente
-    %>
+    <p class="menu-instructions">Escolha uma das opções!</p>
 </body>
 
 </html>

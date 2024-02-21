@@ -1,10 +1,10 @@
 body {
     background-color: white;
-    font-family: 'Aleo', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-image: url('../images/fundo.jpg'); /* Substitua 'caminho/para/sua/imagem.jpg' pelo caminho da sua imagem */
-    background-size: 100%;
+    font-family: monospace, sans-serif;
+    margin:  0;
+    padding:  0;
+    background-image: url('../images/background-menu.jpg');
+    background-size: cover;
 }
 
 .navbar {
@@ -12,87 +12,104 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    height: 40px; 
+    padding:  10px  20px;
+    height:  40px;
 }
 
-.logo a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 24px;
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width:  150px;
+    height: auto;
 }
 
 .menu-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 150px;
+    margin-top:  150px;
 }
+
 .menu-options {
-    display: flex; /* Aplica flexbox nas opções do menu */
-    justify-content: center; /* Centraliza as opções horizontalmente */
+    display: flex;
+    justify-content: center;
 }
 
 .menu-option {
-    margin: 0 10px; 
-    padding: 10px 20px;
+    margin:   0   10px;
+    padding:   10px   20px;
     text-decoration: none;
     color: #000000;
-    font-size: 40px;
-    border: 2px solid #63BCE1; /* Adiciona uma borda sólida */
-    border-radius: 20px; /* Bordas arredondadas */
-    transition: box-shadow 0.3s ease; /* Adiciona transição suave para a sombra */
-    position: relative; /* Permite posicionar o texto explicativo */
-    overflow: hidden; /* Oculta o texto que extrapola o tamanho do botão */
-    background-color: rgb(99,188,225); /* Adiciona uma cor de fundo com transparência */
+    font-size:   40px;
+    border:   2px solid #63BCE1;
+    border-radius:   20px;
+    transition: box-shadow   0.3s ease, background-color   0.3s ease;
+    position: relative;
+    overflow: hidden;
+    background-color: rgb(99,188,225);
+    box-shadow:   0   5px   15px rgba(0,   0,   0,   0.1); 
 }
 
 .menu-option:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra ao botão */
+    box-shadow:   0   5px   15px rgba(0,   0,   0,   0.3); 
+    background-color: rgb(79,168,205); 
 }
 
 .menu-option::after {
-    content: attr(data-text); /* Usa o conteúdo do atributo data-text como texto explicativo */
+    content: attr(data-text);
     display: block;
-    font-size: 16px;
-    margin-top: 5px;
+    font-size:   16px;
+    margin-top:   5px;
     color: #333;
-    position: absolute; /* Posiciona o texto explicativo em relação à opção do menu */
-    bottom: -100%; /* Move o texto para fora do botão */
-    left: 0;
-    right: 0;
-    text-align: center; /* Centraliza o texto horizontalmente */
-    transition: bottom 0.3s ease; /* Adiciona uma transição suave para a animação */
+    position: absolute;
+    bottom: -100%;
+    left:   0;
+    right:   0;
+    text-align: center;
+    transition: bottom   0.3s ease;
 }
 
 .menu-option:hover::after {
-    bottom: 0; /* Move o texto para dentro do botão */
+    bottom:   0;
 }
 
-.social-links {
-    display: flex;
-}
-
-.social-link {
-    margin: 0 10px;
+.social-links .social-link {
+    margin:   0   10px;
     text-decoration: none;
-    color: #fff;
+    color: #000;
+    background-color: #63BCE1; 
+    padding:   10px   20px;
+    border-radius:   20px;
+    transition: background-color   0.3s ease;
 }
 
-/* Media query para telas menores */
-@media screen and (max-width: 768px) {
+.social-links .social-link:hover {
+    background-color: #51A3D7; 
+}
+
+.menu-instructions {
+    text-align: center;
+    font-size:  18px;
+    color: #333;
+    margin-top:  35px;
+}
+
+@media screen and (max-width:  768px) {
     .navbar {
         flex-direction: column;
         text-align: center;
         height: auto;
     }
-    
-    .logo {
-        margin-bottom: 20px;
+
+    .logo-container {
+        margin-bottom:  20px;
     }
-    
+
     .menu-container {
-        margin-top: 0;
+        margin-top:  0;
     }
 }
+

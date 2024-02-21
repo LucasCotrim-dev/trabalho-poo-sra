@@ -14,6 +14,10 @@ body {
 
 #container {
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .edit-profile-title {
@@ -28,9 +32,8 @@ body {
     align-items: center;
     text-align: center;
     padding: 10px;
-    
     background-color: #f2edede2;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* offsetX offsetY blurRadius spreadRadius color */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
 
 .profile-image-container {
@@ -68,9 +71,9 @@ body {
     bottom:  0;
     left:  50%;
     transform: translateX(-50%);
-    background-color: #007bff; /* Cor de fundo do botão */
-    color: white; /* Cor do texto do botão */
-    border: none; /* Remove a borda padrão do botão */
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
     border-radius:  5px; 
     padding:  5px  15px; 
     font-size:  16px; 
@@ -79,7 +82,7 @@ body {
 }
 
 .profile-image-container button:hover {
-    background-color: #0056b3; /* Muda a cor de fundo quando o mouse passa sobre o botão */
+    background-color: #0056b3; 
 }
 
 
@@ -95,19 +98,18 @@ body {
 }
 
 .profile-image-circle {
-    width:   150px; /* Define a largura do círculo */
-    height:   150px; /* Define a altura do círculo */
-    border-radius:   50%; /* Mantém a forma circular */
-    object-fit: cover; /* A imagem será redimensionada e cortada para preencher completamente o círculo */
-    background-color: #f2edede2; /* Cor de fundo para o círculo quando não há imagem */
+    width:   150px; 
+    height:   150px; 
+    border-radius:   50%; 
+    object-fit: cover; 
+    background-color: #f2edede2; 
 }
 
 .profile-image-circle.empty {
     background-image: url('images/fotosPerfil/perfilVazio.png'); /* Imagem de fundo padrão */
-    background-size: cover; /* A imagem de fundo será redimensionada para cobrir todo o círculo */
+    background-size: cover; 
 }
 
-/* Estilo para os botões de imagem dentro do modal */
 .modal-content .image-button {
     width:   150px; /* Define a largura do botão */
     height:   150px; /* Define a altura do botão */
@@ -187,7 +189,6 @@ input[type="text"] {
     margin-bottom: 13px; 
 }
 
-/* Estilo para o modal */
 .modal {
     display: none; 
     position: fixed; 
@@ -200,7 +201,6 @@ input[type="text"] {
     background-color: rgba(0,0,0,0.4); 
 }
 
-/* Estilo para o conteúdo do modal */
 .modal-content {
     background-color: #fefefe; 
     margin:  15% auto; 
@@ -213,7 +213,6 @@ input[type="text"] {
     gap:  10px; 
 }
 
-/* Estilo para os botões de imagem */
 .image-button {
     background: none;
     border: none;
@@ -224,11 +223,24 @@ input[type="text"] {
     height: auto; 
 }
 
-/* Estilo para as imagens dentro dos botões */
 .image-button img {
     width:  100%; 
     height: auto; 
     object-fit: cover; 
 }
 
+.voltar-btn {
+    display: inline-block;
+    padding:  10px  20px;
+    margin-top:  20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius:  5px;
+    transition: background-color  0.3s ease;
+}
+
+.voltar-btn:hover {
+    background-color: #0056b3;
+}
 

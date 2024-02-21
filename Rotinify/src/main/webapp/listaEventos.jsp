@@ -13,8 +13,10 @@
 <body>
     
     <h1>Lista de Eventos</h1>
-    
-    <a href="criarEvento.html">Criar Evento</a>
+    <div class="button-wrapper">
+    	<a href="criarEvento.html">Criar Evento</a>
+    </div>
+    <a class="back-button" href="main">Voltar para o Calendário Semanal</a>
 
     <%
         ArrayList<Evento> listaEventos = (ArrayList<Evento>) request.getAttribute("eventos");
@@ -40,7 +42,7 @@
     <%
         }
     %>
-    <a href="main">Voltar para o Calendário Semanal</a>
+    
     <script>
         function confirmar(id) {
             let resposta = confirm("Confirma a exclusão deste evento?")

@@ -17,6 +17,16 @@ Usuario usuario = (Usuario) session.getAttribute("usuario");
 </head>
 <body
 	style="background-image: url(images/background.png); background-size: cover;">
+	<%
+	String senhaAlterada = request.getParameter("senhaAlterada");
+	if ("true".equals(senhaAlterada)) {
+	%>
+	<div style="text-align: center; margin-top: 20px;">
+		<span style="color: green;">Senha alterada com sucesso!</span>
+	</div>
+	<%
+	}
+	%>
 	<div id="container">
 		<h1 class="edit-profile-title">EDITAR PERFIL</h1>
 		<div class="profile-container">
@@ -70,9 +80,9 @@ Usuario usuario = (Usuario) session.getAttribute("usuario");
 						type="button">Trocar Senha</button></a>
 			</form>
 		</div>
+		<a href="menu.jsp" class="voltar-btn">Voltar</a>
 		<div id="imagePopup" class="modal">
 			<div class="modal-content">
-				<!-- Botões de imagem existentes -->
 				<button class="image-button"
 					onclick="selectImage('images/fotosPerfil/fotoPerfil1.png')">
 					<img src="images/fotosPerfil/fotoPerfil1.png" alt="Imagem  1">
@@ -110,7 +120,6 @@ Usuario usuario = (Usuario) session.getAttribute("usuario");
 					<img src="images/fotosPerfil/fotoPerfil9.png" alt="Imagem  9">
 				</button>
 			</div>
-
 		</div>
 		<script>
 			// Função para abrir o pop-up
@@ -132,7 +141,7 @@ Usuario usuario = (Usuario) session.getAttribute("usuario");
 				img.classList.add('profile-image-circle');
 				img.classList.remove('empty'); // Remove a classe 'empty' se houver uma imagem selecionada
 				closeImagePopup();
-				
+
 				document.getElementById('foto_url').value = imagePath;
 			}
 

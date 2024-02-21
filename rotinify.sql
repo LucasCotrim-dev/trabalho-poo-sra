@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21/02/2024 às 00:17
--- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- Generation Time: Feb 21, 2024 at 11:16 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `rotinify`
+-- Database: `rotinify`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `evento`
+-- Table structure for table `evento`
 --
 
 CREATE TABLE `evento` (
@@ -37,19 +37,10 @@ CREATE TABLE `evento` (
   `usuario_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `evento`
---
-
-INSERT INTO `evento` (`id`, `data`, `nome`, `descricao`, `horario`, `dia_semana`, `usuario_id`) VALUES
-(2, '2024-02-29', 'brincar de tarde', '', '09:00', 'Quinta-feira', 28),
-(3, '2024-03-06', 'aula', '', '08:55', 'Quarta-feira', 28),
-(4, '2024-02-26', 'aula', 'sdad', '08:42', 'Segunda-feira', 28);
-
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `tarefa`
+-- Table structure for table `tarefa`
 --
 
 CREATE TABLE `tarefa` (
@@ -62,21 +53,10 @@ CREATE TABLE `tarefa` (
   `usuario_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `tarefa`
---
-
-INSERT INTO `tarefa` (`id`, `nome`, `descricao`, `horario`, `imagem`, `dia_semana`, `usuario_id`) VALUES
-(90, 'prova', '', '16:41', NULL, 'Segunda-feira', 28),
-(101, 'aula de português', '', '17:00', NULL, 'Quarta-feira', 28),
-(102, 'prova', 'inglês', '10:00', NULL, 'Sexta-feira', 28),
-(103, 'brincar de tarde', 'ir no parque', '17:00', NULL, 'Sábado', 28),
-(104, 'almoço', 'almoço na casa da avó', '20:30', NULL, 'Domingo', 28);
-
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuario`
+-- Table structure for table `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -89,70 +69,63 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `usuario`
---
-
-INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`, `cuidador`, `foto_url`) VALUES
-(28, 'tharlis', 'tharlisfabio@gmail.com', '1', 'fabio', '');
-
---
--- Índices para tabelas despejadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices de tabela `evento`
+-- Indexes for table `evento`
 --
 ALTER TABLE `evento`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_usuario_id` (`usuario_id`);
 
 --
--- Índices de tabela `tarefa`
+-- Indexes for table `tarefa`
 --
 ALTER TABLE `tarefa`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_usuario` (`usuario_id`);
 
 --
--- Índices de tabela `usuario`
+-- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `evento`
+-- AUTO_INCREMENT for table `evento`
 --
 ALTER TABLE `evento`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de tabela `tarefa`
+-- AUTO_INCREMENT for table `tarefa`
 --
 ALTER TABLE `tarefa`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
--- AUTO_INCREMENT de tabela `usuario`
+-- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- Restrições para tabelas despejadas
+-- Constraints for dumped tables
 --
 
 --
--- Restrições para tabelas `evento`
+-- Constraints for table `evento`
 --
 ALTER TABLE `evento`
   ADD CONSTRAINT `fk_usuario_id` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`);
 
 --
--- Restrições para tabelas `tarefa`
+-- Constraints for table `tarefa`
 --
 ALTER TABLE `tarefa`
   ADD CONSTRAINT `fk_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`);

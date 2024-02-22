@@ -29,6 +29,11 @@
 2. Selecione a versão mais recente e baixe o instalador.
 3. Execute o instalador e siga as instruções de instalação padrão.
 
+### Importação do Banco de Dados no XAMPP:
+1. Após todas as instalações e importações, crie um banco de dados com o nome "rotinify".
+2. Com o banco de dados selecionado, vá para "Importar".
+3. Selecione o arquivo .sql e importe.
+
 ### Importação do Projeto:
 1. Extraia o arquivo zip do projeto.
 2. No Eclipse, selecione "File" na barra de opções.
@@ -36,11 +41,6 @@
 4. Em "General", escolha "Existing Projects into Workspace".
 5. Clique em "Browse..." e selecione a pasta do projeto.
 6. Após a seleção, clique em "Finish".
-
-### Importação do Banco de Dados no XAMPP:
-1. Após todas as instalações e importações, crie um banco de dados com o nome "rotinify".
-2. Com o banco de dados selecionado, vá para "Importar".
-3. Selecione o arquivo .sql e importe.
 
 ### Inicialização do Sistema ROTINIFY:
 1. Certifique-se de que o servidor do banco de dados esteja ligado.

@@ -1,6 +1,4 @@
-Certainly! Here's the formatted version for your README:
-
----
+### Rotinify - Instalação
 
 ### Instalação do JDK:
 1. Acesse o site [Oracle JDK Downloads](https://www.oracle.com/br/java/technologies/downloads/).
@@ -51,7 +49,3 @@ Certainly! Here's the formatted version for your README:
 4. Selecione o servidor Tomcat.
 5. Clique em "Next" para verificar se o servidor está ativo.
 6. Clique em "Finish".
-
---- 
-
-This should make it easier for users to follow the installation and setup instructions for your project.
